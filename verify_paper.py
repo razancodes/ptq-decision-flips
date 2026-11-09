@@ -12,6 +12,7 @@ the Table 2 bootstrap intervals; see paper_tables.py for why).
 import json
 import os
 import sys
+from decimal import ROUND_HALF_UP, Decimal
 
 import pandas as pd
 
@@ -94,8 +95,7 @@ CLAIMS = [
     ("Table 2: Qwen2.5 CI low", "0.855", lambda: T2("Qwen2.5", "ci95_prompt_clustered")[0], 0.004),
     ("Table 2: Qwen2.5 CI high", "0.942", lambda: T2("Qwen2.5", "ci95_prompt_clustered")[1], 0.004),
     ("S3.3: corr(m0, m0+dm), Falcon3 low", "0.90", lambda: J("review_audit.json", "B_post_quant_margin", "Falcon3-3B", "corr_m0_mq"), None),
-    # 0.945 rounds half-up to the printed 0.95; binary float rounds it to 0.94.
-    ("S3.3: corr(m0, m0+dm), Falcon3 high", "0.95", lambda: J("review_audit.json", "B_post_quant_margin", "Falcon3-1B", "corr_m0_mq"), 0.005),
+    ("S3.3: corr(m0, m0+dm), Falcon3 high", "0.95", lambda: J("review_audit.json", "B_post_quant_margin", "Falcon3-1B", "corr_m0_mq"), None),
     # ---- Appendix A (limitations)
     ("App A: m0 ranks sampling-only flips, low", "0.87", lambda: J("review_audit.json", "E_sampling_specificity", "Qwen2.5: fp16 sampled vs fp16 greedy (pure sampling)", "auc_m0_sampling"), None),
     ("App A: m0 ranks sampling-only flips, high", "0.95", lambda: J("review_audit.json", "E_sampling_specificity", "Falcon3-gguf: sampler-only breaks (Study A flip, not in repaired)", "auc_m0"), None),
@@ -173,8 +173,11 @@ UNVERIFIED = [
 ]
 
 
-def decimals(s):
-    return len(s.split(".")[1]) if "." in s else 0
+def rounds_to(v, printed):
+    """True if v rounds half-up to the printed value, as a paper rounds (0.945 -> 0.95).
+    Decimal(repr(v)) avoids binary-float artefacts such as 0.945 being 0.94499..."""
+    q = Decimal(printed)
+    return Decimal(repr(v)).quantize(q if "." in printed else Decimal(1), rounding=ROUND_HALF_UP) == q
 
 
 def main():
@@ -187,7 +190,7 @@ def main():
             fails += 1
             continue
         target = float(printed)
-        ok = abs(v - target) <= tol if tol else round(v, decimals(printed)) == target
+        ok = abs(v - target) <= tol if tol else rounds_to(v, printed)
         fails += not ok
         note = f" (tolerance {tol})" if tol else ""
         print(f"{'ok  ' if ok else 'FAIL'}  {where:58s} paper {printed:>7}  artifact {v:.4g}{note}")
