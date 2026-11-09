@@ -1,0 +1,12 @@
+# GPU experiments (experiments/, experiments/kernels/). Versions as recorded in the
+# Kaggle run logs, Aug-Sep 2026, Python 3.12, single NVIDIA T4.
+torch==2.10.0            # +cu128 on GPU kernels, +cpu on the GGUF kernels
+transformers==5.16.1     # GPU kernels; the CPU GGUF kernel logged 5.0.0
+gptqmodel==7.3.5
+llama-cpp-python==0.3.35 # GGUF cells, CPU build
+numpy==2.2.6
+# The kernels also installed autoawq and optimum unpinned on top of Kaggle's image;
+# the logs do not record the resolved versions. Pin them to the release current in
+# late August 2026 if exact reproduction matters.
+autoawq
+optimum

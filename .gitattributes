@@ -1,0 +1,8 @@
+# Model-generated text is DATA, not source. Some replies contain literal CRLF,
+# and git's autocrlf was silently rewriting those to LF inside quoted CSV
+# fields -- 89 cells across 6 files -- so a fresh clone did not reproduce the
+# byte-level text comparisons the analysis depends on (e.g. the re-seed text
+# divergence rate). Store these exactly as written.
+*.csv    -text
+*.joblib binary
+*.gguf   binary

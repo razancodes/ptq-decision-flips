@@ -1,0 +1,185 @@
+{
+  "H1_norm_tensors": {
+    "1B-awq": {
+      "n": 37,
+      "n_exactly_zero": 1,
+      "median_alpha": 8.177,
+      "max_alpha": 20.16001,
+      "median_frobenius": 1.02553
+    },
+    "1B-gguf": {
+      "n": 37,
+      "n_exactly_zero": 36,
+      "median_alpha": 0.0,
+      "max_alpha": 0.0,
+      "median_frobenius": 0.0
+    },
+    "1B-gptq": {
+      "n": 37,
+      "n_exactly_zero": 37,
+      "median_alpha": 0.0,
+      "max_alpha": 0.0,
+      "median_frobenius": 0.0
+    },
+    "3B-awq": {
+      "n": 45,
+      "n_exactly_zero": 1,
+      "median_alpha": 6.47212,
+      "max_alpha": 14.46971,
+      "median_frobenius": 1.04324
+    },
+    "3B-gguf": {
+      "n": 45,
+      "n_exactly_zero": 45,
+      "median_alpha": 0.0,
+      "max_alpha": 0.0,
+      "median_frobenius": 0.0
+    },
+    "3B-gptq": {
+      "n": 45,
+      "n_exactly_zero": 45,
+      "median_alpha": 0.0,
+      "max_alpha": 0.0,
+      "median_frobenius": 0.0
+    }
+  },
+  "H2_by_projection": {
+    "1B-awq": {
+      "down_proj": 0.42516,
+      "gate_proj": 0.51155,
+      "k_proj": 0.51178,
+      "o_proj": 0.08351,
+      "q_proj": 0.51209,
+      "up_proj": 0.30974,
+      "v_proj": 0.51893
+    },
+    "1B-gguf": {
+      "down_proj": 0.03978,
+      "gate_proj": 0.06341,
+      "k_proj": 0.06273,
+      "o_proj": 0.06433,
+      "q_proj": 0.06208,
+      "up_proj": 0.06316,
+      "v_proj": 0.04061
+    },
+    "1B-gptq": {
+      "down_proj": 0.14499,
+      "gate_proj": 0.11753,
+      "k_proj": 0.12764,
+      "o_proj": 0.1259,
+      "q_proj": 0.12074,
+      "up_proj": 0.11192,
+      "v_proj": 0.12044
+    },
+    "3B-awq": {
+      "down_proj": 0.44354,
+      "gate_proj": 0.51774,
+      "k_proj": 0.51635,
+      "o_proj": 0.09963,
+      "q_proj": 0.51954,
+      "up_proj": 0.28976,
+      "v_proj": 0.52764
+    },
+    "3B-gguf": {
+      "down_proj": 0.06948,
+      "gate_proj": 0.06926,
+      "k_proj": 0.0698,
+      "o_proj": 0.0708,
+      "q_proj": 0.06967,
+      "up_proj": 0.06899,
+      "v_proj": 0.07065
+    },
+    "3B-gptq": {
+      "down_proj": 0.17597,
+      "gate_proj": 0.14593,
+      "k_proj": 0.14928,
+      "o_proj": 0.15569,
+      "q_proj": 0.14591,
+      "up_proj": 0.14073,
+      "v_proj": 0.14831
+    }
+  },
+  "H3_frobenius_vs_alpha": {
+    "1B-awq": {
+      "median_alpha_equiv": 0.45392,
+      "median_frobenius_ratio": 0.4537,
+      "median_mean_error_over_rms": 0.00113
+    },
+    "1B-gguf": {
+      "median_alpha_equiv": 0.06318,
+      "median_frobenius_ratio": 0.06315,
+      "median_mean_error_over_rms": 0.00486
+    },
+    "1B-gptq": {
+      "median_alpha_equiv": 0.12215,
+      "median_frobenius_ratio": 0.12215,
+      "median_mean_error_over_rms": 0.00514
+    },
+    "3B-awq": {
+      "median_alpha_equiv": 0.47999,
+      "median_frobenius_ratio": 0.47995,
+      "median_mean_error_over_rms": 0.00072
+    },
+    "3B-gguf": {
+      "median_alpha_equiv": 0.06959,
+      "median_frobenius_ratio": 0.06957,
+      "median_mean_error_over_rms": 0.00444
+    },
+    "3B-gptq": {
+      "median_alpha_equiv": 0.14877,
+      "median_frobenius_ratio": 0.14876,
+      "median_mean_error_over_rms": 0.00476
+    }
+  },
+  "outliers_above_0.6": {
+    "1B-awq": {
+      "n": 10,
+      "kinds": {
+        "gate_proj": 3,
+        "v_proj": 3,
+        "q_proj": 1,
+        "k_proj": 1,
+        "down_proj": 1,
+        "up_proj": 1
+      },
+      "layers": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        8,
+        16
+      ],
+      "max": 19.5657
+    },
+    "3B-awq": {
+      "n": 18,
+      "kinds": {
+        "gate_proj": 5,
+        "q_proj": 4,
+        "v_proj": 4,
+        "k_proj": 3,
+        "down_proj": 1,
+        "up_proj": 1
+      },
+      "layers": [
+        0,
+        1,
+        5,
+        6,
+        7,
+        8,
+        11,
+        19
+      ],
+      "max": 4.0016
+    }
+  },
+  "reference_uniform_quantizer_alpha": {
+    "4bit": 0.1263,
+    "5bit": 0.06315,
+    "6bit": 0.03157,
+    "8bit": 0.00789
+  }
+}

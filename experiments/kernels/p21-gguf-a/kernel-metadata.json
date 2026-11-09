@@ -1,0 +1,15 @@
+{
+  "id": "razanml/slm-phase21-gguf-a",
+  "title": "SLM phase21 gguf-a",
+  "code_file": "regrid.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "razanml/slm-quant-attack-prompts"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

@@ -1,0 +1,98 @@
+{
+  "config": {
+    "mode": "hf",
+    "model_keys": [
+      "qwen2.5-1.5b",
+      "qwen2.5-3b"
+    ],
+    "methods": [
+      "awq",
+      "gptq"
+    ],
+    "cells": [
+      [
+        "qwen2.5-3b",
+        "gptq"
+      ],
+      [
+        "qwen2.5-3b",
+        "awq"
+      ],
+      [
+        "qwen2.5-1.5b",
+        "gptq"
+      ]
+    ],
+    "max_new_tokens": 100,
+    "limit_prompts": null,
+    "diagnosis_controls_per_cell": 0,
+    "llama_awq_check": false,
+    "llama_awq_repo": "AMead10/Llama-3.2-3B-Instruct-AWQ",
+    "llama_awq_n_prompts": 40,
+    "dataset_dir": "/kaggle/input/slm-quant-attack-prompts",
+    "out_dir": "/kaggle/working"
+  },
+  "cells": {
+    "qwen2.5-3b/gptq": {
+      "n": 400,
+      "n_empty": 0,
+      "finish_reasons": {
+        "length": 216,
+        "eos": 184
+      },
+      "seconds": 3627.1,
+      "n_gpu_layers": null,
+      "repo": "Qwen/Qwen2.5-3B-Instruct-GPTQ-Int4",
+      "repo_declared_generation_config": {
+        "do_sample": true,
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "eos_token_id": "[151645, 151643]"
+      },
+      "decoding_used_by_this_rerun": "greedy (do_sample=False, explicit)"
+    },
+    "qwen2.5-3b/awq": {
+      "n": 400,
+      "n_empty": 0,
+      "finish_reasons": {
+        "length": 201,
+        "eos": 199
+      },
+      "seconds": 2235.1,
+      "n_gpu_layers": null,
+      "repo": "Qwen/Qwen2.5-3B-Instruct-AWQ",
+      "repo_declared_generation_config": {
+        "do_sample": true,
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "eos_token_id": "[151645, 151643]"
+      },
+      "decoding_used_by_this_rerun": "greedy (do_sample=False, explicit)"
+    },
+    "qwen2.5-1.5b/gptq": {
+      "n": 400,
+      "n_empty": 0,
+      "finish_reasons": {
+        "eos": 269,
+        "length": 131
+      },
+      "seconds": 1918.1,
+      "n_gpu_layers": null,
+      "repo": "Qwen/Qwen2.5-1.5B-Instruct-GPTQ-Int4",
+      "repo_declared_generation_config": {
+        "do_sample": true,
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "eos_token_id": "[151645, 151643]"
+      },
+      "decoding_used_by_this_rerun": "greedy (do_sample=False, explicit)"
+    }
+  },
+  "started": 1787894602.4200377,
+  "torch": "2.10.0+cu128",
+  "finished": 1787902386.4187489,
+  "minutes": 129.7
+}

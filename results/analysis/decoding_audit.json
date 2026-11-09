@@ -1,0 +1,626 @@
+{
+  "cells": [
+    {
+      "family": "Falcon3",
+      "size": "1B",
+      "method": "awq",
+      "repo": "tiiuae/Falcon3-1B-Instruct-AWQ",
+      "engine": "transformers",
+      "do_sample": true,
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "greedy": false,
+      "raw": {
+        "_from_model_config": true,
+        "bos_token_id": 11,
+        "do_sample": true,
+        "eos_token_id": 11,
+        "transformers_version": "4.47.0"
+      }
+    },
+    {
+      "family": "Falcon3",
+      "size": "1B",
+      "method": "fp16",
+      "repo": "tiiuae/Falcon3-1B-Instruct",
+      "engine": "transformers",
+      "do_sample": null,
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "greedy": true,
+      "raw": {
+        "_from_model_config": true,
+        "bos_token_id": 11,
+        "eos_token_id": 11,
+        "transformers_version": "4.46.1"
+      }
+    },
+    {
+      "family": "Falcon3",
+      "size": "1B",
+      "method": "gptq",
+      "repo": "tiiuae/Falcon3-1B-Instruct-GPTQ-Int4",
+      "engine": "transformers",
+      "error": "RemoteEntryNotFoundError: 404 Client Error. (Request ID: Root=1-6a907675-2a3054af281082316ff17425;06ce57ec-a943-45b3-9be2-e7384286822c)\n\nEntry Not Found for url: https://huggingface.co/tiiuae/Falcon3-1B-Instruct-GPTQ-Int4/resolve/main/generation_config.json.",
+      "greedy": null
+    },
+    {
+      "family": "Falcon3",
+      "size": "3B",
+      "method": "awq",
+      "repo": "tiiuae/Falcon3-3B-Instruct-AWQ",
+      "engine": "transformers",
+      "do_sample": true,
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "greedy": false,
+      "raw": {
+        "_from_model_config": true,
+        "bos_token_id": 11,
+        "do_sample": true,
+        "eos_token_id": 11,
+        "transformers_version": "4.47.0"
+      }
+    },
+    {
+      "family": "Falcon3",
+      "size": "3B",
+      "method": "fp16",
+      "repo": "tiiuae/Falcon3-3B-Instruct",
+      "engine": "transformers",
+      "do_sample": null,
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "greedy": true,
+      "raw": {
+        "_from_model_config": true,
+        "bos_token_id": 11,
+        "eos_token_id": 11,
+        "transformers_version": "4.46.1"
+      }
+    },
+    {
+      "family": "Falcon3",
+      "size": "3B",
+      "method": "gptq",
+      "repo": "tiiuae/Falcon3-3B-Instruct-GPTQ-Int4",
+      "engine": "transformers",
+      "error": "RemoteEntryNotFoundError: 404 Client Error. (Request ID: Root=1-6a907676-41978320693aec154aadc840;ce9fccd8-8910-4fca-ba17-39d047160fe7)\n\nEntry Not Found for url: https://huggingface.co/tiiuae/Falcon3-3B-Instruct-GPTQ-Int4/resolve/main/generation_config.json.",
+      "greedy": null
+    },
+    {
+      "family": "Llama-3.2",
+      "size": "1B",
+      "method": "awq",
+      "repo": "clowman/Llama-3.2-1B-Instruct-AWQ-Int4",
+      "engine": "transformers",
+      "do_sample": true,
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": null,
+      "greedy": false,
+      "raw": {
+        "bos_token_id": 128000,
+        "do_sample": true,
+        "eos_token_id": [
+          128001,
+          128008,
+          128009
+        ],
+        "temperature": 0.6,
+        "top_p": 0.9,
+        "transformers_version": "4.47.1"
+      }
+    },
+    {
+      "family": "Llama-3.2",
+      "size": "1B",
+      "method": "fp16",
+      "repo": "meta-llama/Llama-3.2-1B-Instruct",
+      "engine": "transformers",
+      "error": "GatedRepoError: 401 Client Error. (Request ID: Root=1-6a907677-5a9022013c15cec45f9620bd;e88b604a-8071-431a-b269-2abdeef76ab9)\n\nCannot access gated repo for url https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct/resolve/main/generation_config.json.\nAccess to model meta-llama/Llama-3.2-1B-Instruct is restricted. You must have access to it and be authenticated to access it. Please log in.",
+      "greedy": null
+    },
+    {
+      "family": "Llama-3.2",
+      "size": "1B",
+      "method": "gptq",
+      "repo": "clowman/Llama-3.2-1B-Instruct-GPTQ-Int4",
+      "engine": "transformers",
+      "do_sample": true,
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": null,
+      "greedy": false,
+      "raw": {
+        "bos_token_id": 128000,
+        "do_sample": true,
+        "eos_token_id": [
+          128001,
+          128008,
+          128009
+        ],
+        "temperature": 0.6,
+        "top_p": 0.9,
+        "transformers_version": "4.47.1"
+      }
+    },
+    {
+      "family": "Llama-3.2",
+      "size": "3B",
+      "method": "awq",
+      "repo": "AMead10/Llama-3.2-3B-Instruct-AWQ",
+      "engine": "transformers",
+      "do_sample": true,
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": null,
+      "greedy": false,
+      "raw": {
+        "bos_token_id": 128000,
+        "do_sample": true,
+        "eos_token_id": [
+          128001,
+          128008,
+          128009
+        ],
+        "temperature": 0.6,
+        "top_p": 0.9,
+        "transformers_version": "4.44.2"
+      }
+    },
+    {
+      "family": "Llama-3.2",
+      "size": "3B",
+      "method": "fp16",
+      "repo": "meta-llama/Llama-3.2-3B-Instruct",
+      "engine": "transformers",
+      "error": "GatedRepoError: 401 Client Error. (Request ID: Root=1-6a907679-2dc7e21d7d8c230b2269c0b2;0e8c537a-5b28-4d5f-9de4-63cc94ab6b85)\n\nCannot access gated repo for url https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct/resolve/main/generation_config.json.\nAccess to model meta-llama/Llama-3.2-3B-Instruct is restricted. You must have access to it and be authenticated to access it. Please log in.",
+      "greedy": null
+    },
+    {
+      "family": "Llama-3.2",
+      "size": "3B",
+      "method": "gptq",
+      "repo": "shuyuej/Llama-3.2-3B-Instruct-GPTQ",
+      "engine": "transformers",
+      "do_sample": true,
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": null,
+      "greedy": false,
+      "raw": {
+        "bos_token_id": 128000,
+        "do_sample": true,
+        "eos_token_id": [
+          128001,
+          128008,
+          128009
+        ],
+        "temperature": 0.6,
+        "top_p": 0.9,
+        "transformers_version": "4.43.4"
+      }
+    },
+    {
+      "family": "Qwen2.5",
+      "size": "1.5B",
+      "method": "awq",
+      "repo": "Qwen/Qwen2.5-1.5B-Instruct-AWQ",
+      "engine": "transformers",
+      "do_sample": true,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "greedy": false,
+      "raw": {
+        "bos_token_id": 151643,
+        "do_sample": true,
+        "eos_token_id": [
+          151645,
+          151643
+        ],
+        "pad_token_id": 151643,
+        "repetition_penalty": 1.1,
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "transformers_version": "4.41.1"
+      }
+    },
+    {
+      "family": "Qwen2.5",
+      "size": "1.5B",
+      "method": "fp16",
+      "repo": "Qwen/Qwen2.5-1.5B-Instruct",
+      "engine": "transformers",
+      "do_sample": true,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "greedy": false,
+      "raw": {
+        "bos_token_id": 151643,
+        "pad_token_id": 151643,
+        "do_sample": true,
+        "eos_token_id": [
+          151645,
+          151643
+        ],
+        "repetition_penalty": 1.1,
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "transformers_version": "4.37.0"
+      }
+    },
+    {
+      "family": "Qwen2.5",
+      "size": "1.5B",
+      "method": "gptq",
+      "repo": "Qwen/Qwen2.5-1.5B-Instruct-GPTQ-Int4",
+      "engine": "transformers",
+      "do_sample": true,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "greedy": false,
+      "raw": {
+        "bos_token_id": 151643,
+        "do_sample": true,
+        "eos_token_id": [
+          151645,
+          151643
+        ],
+        "pad_token_id": 151643,
+        "repetition_penalty": 1.1,
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "transformers_version": "4.39.3"
+      }
+    },
+    {
+      "family": "Qwen2.5",
+      "size": "3B",
+      "method": "awq",
+      "repo": "Qwen/Qwen2.5-3B-Instruct-AWQ",
+      "engine": "transformers",
+      "do_sample": true,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "greedy": false,
+      "raw": {
+        "bos_token_id": 151643,
+        "do_sample": true,
+        "eos_token_id": [
+          151645,
+          151643
+        ],
+        "pad_token_id": 151643,
+        "repetition_penalty": 1.05,
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "transformers_version": "4.41.1"
+      }
+    },
+    {
+      "family": "Qwen2.5",
+      "size": "3B",
+      "method": "fp16",
+      "repo": "Qwen/Qwen2.5-3B-Instruct",
+      "engine": "transformers",
+      "do_sample": true,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "greedy": false,
+      "raw": {
+        "bos_token_id": 151643,
+        "pad_token_id": 151643,
+        "do_sample": true,
+        "eos_token_id": [
+          151645,
+          151643
+        ],
+        "repetition_penalty": 1.05,
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "transformers_version": "4.37.0"
+      }
+    },
+    {
+      "family": "Qwen2.5",
+      "size": "3B",
+      "method": "gptq",
+      "repo": "Qwen/Qwen2.5-3B-Instruct-GPTQ-Int4",
+      "engine": "transformers",
+      "do_sample": true,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "greedy": false,
+      "raw": {
+        "bos_token_id": 151643,
+        "do_sample": true,
+        "eos_token_id": [
+          151645,
+          151643
+        ],
+        "pad_token_id": 151643,
+        "repetition_penalty": 1.05,
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "transformers_version": "4.39.3"
+      }
+    },
+    {
+      "family": "SmolLM2",
+      "size": "1.7B",
+      "method": "fp16",
+      "repo": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+      "engine": "transformers",
+      "do_sample": null,
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "greedy": true,
+      "raw": {
+        "_from_model_config": true,
+        "bos_token_id": 1,
+        "eos_token_id": 2,
+        "pad_token_id": 2,
+        "transformers_version": "4.42.3"
+      }
+    },
+    {
+      "family": "SmolLM2",
+      "size": "360M",
+      "method": "fp16",
+      "repo": "HuggingFaceTB/SmolLM2-360M-Instruct",
+      "engine": "transformers",
+      "do_sample": null,
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "greedy": true,
+      "raw": {
+        "_from_model_config": true,
+        "bos_token_id": 1,
+        "eos_token_id": 2,
+        "pad_token_id": 2,
+        "transformers_version": "4.42.3"
+      }
+    },
+    {
+      "family": "Falcon3",
+      "size": "1B",
+      "method": "gguf",
+      "repo": "tiiuae/Falcon3-1B-Instruct-GGUF",
+      "engine": "llama.cpp via create_chat_completion",
+      "do_sample": "n/a (llama.cpp)",
+      "temperature": 0.2,
+      "top_p": 0.95,
+      "top_k": 40,
+      "greedy": false,
+      "raw": {
+        "library_defaults": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "top_k": 40,
+          "min_p": 0.05,
+          "repeat_penalty": 1.0
+        },
+        "note": "generate_reply_gguf passes only max_tokens, so these defaults applied"
+      }
+    },
+    {
+      "family": "Falcon3",
+      "size": "3B",
+      "method": "gguf",
+      "repo": "tiiuae/Falcon3-3B-Instruct-GGUF",
+      "engine": "llama.cpp via create_chat_completion",
+      "do_sample": "n/a (llama.cpp)",
+      "temperature": 0.2,
+      "top_p": 0.95,
+      "top_k": 40,
+      "greedy": false,
+      "raw": {
+        "library_defaults": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "top_k": 40,
+          "min_p": 0.05,
+          "repeat_penalty": 1.0
+        },
+        "note": "generate_reply_gguf passes only max_tokens, so these defaults applied"
+      }
+    },
+    {
+      "family": "Llama-3.2",
+      "size": "1B",
+      "method": "gguf",
+      "repo": "bartowski/Llama-3.2-1B-Instruct-GGUF",
+      "engine": "llama.cpp via create_chat_completion",
+      "do_sample": "n/a (llama.cpp)",
+      "temperature": 0.2,
+      "top_p": 0.95,
+      "top_k": 40,
+      "greedy": false,
+      "raw": {
+        "library_defaults": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "top_k": 40,
+          "min_p": 0.05,
+          "repeat_penalty": 1.0
+        },
+        "note": "generate_reply_gguf passes only max_tokens, so these defaults applied"
+      }
+    },
+    {
+      "family": "Llama-3.2",
+      "size": "3B",
+      "method": "gguf",
+      "repo": "bartowski/Llama-3.2-3B-Instruct-GGUF",
+      "engine": "llama.cpp via create_chat_completion",
+      "do_sample": "n/a (llama.cpp)",
+      "temperature": 0.2,
+      "top_p": 0.95,
+      "top_k": 40,
+      "greedy": false,
+      "raw": {
+        "library_defaults": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "top_k": 40,
+          "min_p": 0.05,
+          "repeat_penalty": 1.0
+        },
+        "note": "generate_reply_gguf passes only max_tokens, so these defaults applied"
+      }
+    },
+    {
+      "family": "Qwen2.5",
+      "size": "1.5B",
+      "method": "gguf",
+      "repo": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+      "engine": "llama.cpp via create_chat_completion",
+      "do_sample": "n/a (llama.cpp)",
+      "temperature": 0.2,
+      "top_p": 0.95,
+      "top_k": 40,
+      "greedy": false,
+      "raw": {
+        "library_defaults": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "top_k": 40,
+          "min_p": 0.05,
+          "repeat_penalty": 1.0
+        },
+        "note": "generate_reply_gguf passes only max_tokens, so these defaults applied"
+      }
+    },
+    {
+      "family": "Qwen2.5",
+      "size": "3B",
+      "method": "gguf",
+      "repo": "Qwen/Qwen2.5-3B-Instruct-GGUF",
+      "engine": "llama.cpp via create_chat_completion",
+      "do_sample": "n/a (llama.cpp)",
+      "temperature": 0.2,
+      "top_p": 0.95,
+      "top_k": 40,
+      "greedy": false,
+      "raw": {
+        "library_defaults": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "top_k": 40,
+          "min_p": 0.05,
+          "repeat_penalty": 1.0
+        },
+        "note": "generate_reply_gguf passes only max_tokens, so these defaults applied"
+      }
+    },
+    {
+      "family": "SmolLM2",
+      "size": "1.7B",
+      "method": "gguf",
+      "repo": "bartowski/SmolLM2-1.7B-Instruct-GGUF",
+      "engine": "llama.cpp via create_chat_completion",
+      "do_sample": "n/a (llama.cpp)",
+      "temperature": 0.2,
+      "top_p": 0.95,
+      "top_k": 40,
+      "greedy": false,
+      "raw": {
+        "library_defaults": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "top_k": 40,
+          "min_p": 0.05,
+          "repeat_penalty": 1.0
+        },
+        "note": "generate_reply_gguf passes only max_tokens, so these defaults applied"
+      }
+    },
+    {
+      "family": "SmolLM2",
+      "size": "360M",
+      "method": "gguf",
+      "repo": "HuggingFaceTB/SmolLM2-360M-Instruct-GGUF",
+      "engine": "llama.cpp via create_chat_completion",
+      "do_sample": "n/a (llama.cpp)",
+      "temperature": 0.2,
+      "top_p": 0.95,
+      "top_k": 40,
+      "greedy": false,
+      "raw": {
+        "library_defaults": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "top_k": 40,
+          "min_p": 0.05,
+          "repeat_penalty": 1.0
+        },
+        "note": "generate_reply_gguf passes only max_tokens, so these defaults applied"
+      }
+    }
+  ],
+  "llama_cpp_chat_defaults": {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "top_k": 40,
+    "min_p": 0.05,
+    "repeat_penalty": 1.0
+  },
+  "verified": "2026-08-27, against llama_cpp/llama.py source",
+  "summary": {
+    "n_greedy_cells": 4,
+    "n_sampled_cells": 20,
+    "sampled": [
+      "Falcon3-1B-awq",
+      "Falcon3-3B-awq",
+      "Llama-3.2-1B-awq",
+      "Llama-3.2-1B-gptq",
+      "Llama-3.2-3B-awq",
+      "Llama-3.2-3B-gptq",
+      "Qwen2.5-1.5B-awq",
+      "Qwen2.5-1.5B-fp16",
+      "Qwen2.5-1.5B-gptq",
+      "Qwen2.5-3B-awq",
+      "Qwen2.5-3B-fp16",
+      "Qwen2.5-3B-gptq",
+      "Falcon3-1B-gguf",
+      "Falcon3-3B-gguf",
+      "Llama-3.2-1B-gguf",
+      "Llama-3.2-3B-gguf",
+      "Qwen2.5-1.5B-gguf",
+      "Qwen2.5-3B-gguf",
+      "SmolLM2-1.7B-gguf",
+      "SmolLM2-360M-gguf"
+    ],
+    "greedy": [
+      "Falcon3-1B-fp16",
+      "Falcon3-3B-fp16",
+      "SmolLM2-1.7B-fp16",
+      "SmolLM2-360M-fp16"
+    ],
+    "unknown_no_generation_config": [
+      "Falcon3-1B-gptq",
+      "Falcon3-3B-gptq",
+      "Llama-3.2-1B-fp16",
+      "Llama-3.2-3B-fp16"
+    ]
+  }
+}

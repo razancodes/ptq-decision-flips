@@ -1,0 +1,1180 @@
+{
+  "n_perturbed_rows": 60000,
+  "alphas": [
+    0.0025,
+    0.005,
+    0.01,
+    0.02,
+    0.04
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "models": [
+    "falcon3-1b",
+    "falcon3-3b",
+    "llama3.2-1b",
+    "llama3.2-3b",
+    "qwen2.5-1.5b",
+    "qwen2.5-3b"
+  ],
+  "overall_shift": {
+    "n": 60000.0,
+    "mean_delta_m": -0.03738552593655059,
+    "sd_delta_m": 0.6110284627778182,
+    "se": 0.002494513253538064,
+    "t": -14.987102547370819,
+    "mean_over_sd": -0.06118458993970743
+  },
+  "shift_by_alpha": [
+    {
+      "alpha": 0.0025,
+      "n": 12000.0,
+      "mean_delta_m": 0.005224,
+      "sd_delta_m": 0.076443,
+      "se": 0.000698,
+      "t": 7.486259,
+      "mean_over_sd": 0.06834
+    },
+    {
+      "alpha": 0.005,
+      "n": 12000.0,
+      "mean_delta_m": 0.006238,
+      "sd_delta_m": 0.147921,
+      "se": 0.00135,
+      "t": 4.619333,
+      "mean_over_sd": 0.042169
+    },
+    {
+      "alpha": 0.01,
+      "n": 12000.0,
+      "mean_delta_m": 0.003741,
+      "sd_delta_m": 0.292784,
+      "se": 0.002673,
+      "t": 1.3998,
+      "mean_over_sd": 0.012778
+    },
+    {
+      "alpha": 0.02,
+      "n": 12000.0,
+      "mean_delta_m": -0.02605,
+      "sd_delta_m": 0.584375,
+      "se": 0.005335,
+      "t": -4.883209,
+      "mean_over_sd": -0.044577
+    },
+    {
+      "alpha": 0.04,
+      "n": 12000.0,
+      "mean_delta_m": -0.176081,
+      "sd_delta_m": 1.177788,
+      "se": 0.010752,
+      "t": -16.377033,
+      "mean_over_sd": -0.149501
+    }
+  ],
+  "shift_by_model": [
+    {
+      "model_key": "falcon3-1b",
+      "n": 10000.0,
+      "mean_delta_m": 0.045179,
+      "sd_delta_m": 0.330513,
+      "se": 0.003305,
+      "t": 13.669502,
+      "mean_over_sd": 0.136695
+    },
+    {
+      "model_key": "falcon3-3b",
+      "n": 10000.0,
+      "mean_delta_m": -0.040659,
+      "sd_delta_m": 0.541344,
+      "se": 0.005413,
+      "t": -7.510664,
+      "mean_over_sd": -0.075107
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "n": 10000.0,
+      "mean_delta_m": -0.216006,
+      "sd_delta_m": 0.914569,
+      "se": 0.009146,
+      "t": -23.618359,
+      "mean_over_sd": -0.236184
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "n": 10000.0,
+      "mean_delta_m": 0.059312,
+      "sd_delta_m": 0.75124,
+      "se": 0.007512,
+      "t": 7.895223,
+      "mean_over_sd": 0.078952
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "n": 10000.0,
+      "mean_delta_m": -0.044337,
+      "sd_delta_m": 0.310313,
+      "se": 0.003103,
+      "t": -14.287744,
+      "mean_over_sd": -0.142877
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "n": 10000.0,
+      "mean_delta_m": -0.027803,
+      "sd_delta_m": 0.541025,
+      "se": 0.00541,
+      "t": -5.13897,
+      "mean_over_sd": -0.05139
+    }
+  ],
+  "shift_by_tier": [
+    {
+      "template_tier": "data_stealing",
+      "n": 6750.0,
+      "mean_delta_m": -0.02477,
+      "sd_delta_m": 0.695343,
+      "se": 0.008463,
+      "t": -2.926738,
+      "mean_over_sd": -0.035623
+    },
+    {
+      "template_tier": "direct_harm",
+      "n": 8250.0,
+      "mean_delta_m": -0.054984,
+      "sd_delta_m": 0.734122,
+      "se": 0.008082,
+      "t": -6.802853,
+      "mean_over_sd": -0.074897
+    },
+    {
+      "template_tier": "persuasion",
+      "n": 15000.0,
+      "mean_delta_m": -0.022779,
+      "sd_delta_m": 0.629809,
+      "se": 0.005142,
+      "t": -4.429692,
+      "mean_over_sd": -0.036168
+    },
+    {
+      "template_tier": "plain",
+      "n": 15000.0,
+      "mean_delta_m": -0.076124,
+      "sd_delta_m": 0.504748,
+      "se": 0.004121,
+      "t": -18.471141,
+      "mean_over_sd": -0.150816
+    },
+    {
+      "template_tier": "roleplay",
+      "n": 15000.0,
+      "mean_delta_m": -0.009251,
+      "sd_delta_m": 0.570406,
+      "se": 0.004657,
+      "t": -1.986358,
+      "mean_over_sd": -0.016219
+    }
+  ],
+  "shift_falcon3_by_alpha": [
+    {
+      "alpha": 0.0025,
+      "n": 4000.0,
+      "mean_delta_m": 0.004538,
+      "sd_delta_m": 0.057534,
+      "se": 0.00091,
+      "t": 4.988707,
+      "mean_over_sd": 0.078878
+    },
+    {
+      "alpha": 0.005,
+      "n": 4000.0,
+      "mean_delta_m": 0.004905,
+      "sd_delta_m": 0.111696,
+      "se": 0.001766,
+      "t": 2.777229,
+      "mean_over_sd": 0.043912
+    },
+    {
+      "alpha": 0.01,
+      "n": 4000.0,
+      "mean_delta_m": 0.009178,
+      "sd_delta_m": 0.220721,
+      "se": 0.00349,
+      "t": 2.629907,
+      "mean_over_sd": 0.041582
+    },
+    {
+      "alpha": 0.02,
+      "n": 4000.0,
+      "mean_delta_m": 0.009167,
+      "sd_delta_m": 0.434771,
+      "se": 0.006874,
+      "t": 1.333539,
+      "mean_over_sd": 0.021085
+    },
+    {
+      "alpha": 0.04,
+      "n": 4000.0,
+      "mean_delta_m": -0.016486,
+      "sd_delta_m": 0.872414,
+      "se": 0.013794,
+      "t": -1.195157,
+      "mean_over_sd": -0.018897
+    }
+  ],
+  "dose_response": [
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.0025,
+      "n": 2000,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.005,
+      "n": 2000,
+      "sign_flip_pct": 0.05,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.01,
+      "n": 2000,
+      "sign_flip_pct": 0.1,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.02,
+      "n": 2000,
+      "sign_flip_pct": 0.3,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.04,
+      "n": 2000,
+      "sign_flip_pct": 0.45,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.0025,
+      "n": 2000,
+      "sign_flip_pct": 0.05,
+      "refusal_lost_pct": 0.05
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.005,
+      "n": 2000,
+      "sign_flip_pct": 0.15,
+      "refusal_lost_pct": 0.15
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.01,
+      "n": 2000,
+      "sign_flip_pct": 0.45,
+      "refusal_lost_pct": 0.4
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.02,
+      "n": 2000,
+      "sign_flip_pct": 1.05,
+      "refusal_lost_pct": 0.75
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.04,
+      "n": 2000,
+      "sign_flip_pct": 1.8,
+      "refusal_lost_pct": 1.15
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.0025,
+      "n": 2000,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.005,
+      "n": 2000,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.01,
+      "n": 2000,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.02,
+      "n": 2000,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.04,
+      "n": 2000,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.0025,
+      "n": 2000,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.005,
+      "n": 2000,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.01,
+      "n": 2000,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.02,
+      "n": 2000,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.04,
+      "n": 2000,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.0025,
+      "n": 2000,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.005,
+      "n": 2000,
+      "sign_flip_pct": 0.15,
+      "refusal_lost_pct": 0.15
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.01,
+      "n": 2000,
+      "sign_flip_pct": 0.45,
+      "refusal_lost_pct": 0.3
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.02,
+      "n": 2000,
+      "sign_flip_pct": 1.45,
+      "refusal_lost_pct": 0.85
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.04,
+      "n": 2000,
+      "sign_flip_pct": 2.75,
+      "refusal_lost_pct": 1.75
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.0025,
+      "n": 2000,
+      "sign_flip_pct": 0.15,
+      "refusal_lost_pct": 0.15
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.005,
+      "n": 2000,
+      "sign_flip_pct": 0.25,
+      "refusal_lost_pct": 0.2
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.01,
+      "n": 2000,
+      "sign_flip_pct": 0.45,
+      "refusal_lost_pct": 0.4
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.02,
+      "n": 2000,
+      "sign_flip_pct": 0.95,
+      "refusal_lost_pct": 0.85
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.04,
+      "n": 2000,
+      "sign_flip_pct": 2.55,
+      "refusal_lost_pct": 1.9
+    }
+  ],
+  "dose_response_falcon3_by_tier": [
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.0025,
+      "template_tier": "data_stealing",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.0025,
+      "template_tier": "direct_harm",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.0025,
+      "template_tier": "persuasion",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.0025,
+      "template_tier": "plain",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.0025,
+      "template_tier": "roleplay",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.005,
+      "template_tier": "data_stealing",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.005,
+      "template_tier": "direct_harm",
+      "sign_flip": 0.3636
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.005,
+      "template_tier": "persuasion",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.005,
+      "template_tier": "plain",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.005,
+      "template_tier": "roleplay",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.01,
+      "template_tier": "data_stealing",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.01,
+      "template_tier": "direct_harm",
+      "sign_flip": 0.7273
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.01,
+      "template_tier": "persuasion",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.01,
+      "template_tier": "plain",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.01,
+      "template_tier": "roleplay",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.02,
+      "template_tier": "data_stealing",
+      "sign_flip": 0.8889
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.02,
+      "template_tier": "direct_harm",
+      "sign_flip": 1.4545
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.02,
+      "template_tier": "persuasion",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.02,
+      "template_tier": "plain",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.02,
+      "template_tier": "roleplay",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.04,
+      "template_tier": "data_stealing",
+      "sign_flip": 1.7778
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.04,
+      "template_tier": "direct_harm",
+      "sign_flip": 1.8182
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.04,
+      "template_tier": "persuasion",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.04,
+      "template_tier": "plain",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.04,
+      "template_tier": "roleplay",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.0025,
+      "template_tier": "data_stealing",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.0025,
+      "template_tier": "direct_harm",
+      "sign_flip": 0.3636
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.0025,
+      "template_tier": "persuasion",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.0025,
+      "template_tier": "plain",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.0025,
+      "template_tier": "roleplay",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.005,
+      "template_tier": "data_stealing",
+      "sign_flip": 0.4444
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.005,
+      "template_tier": "direct_harm",
+      "sign_flip": 0.7273
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.005,
+      "template_tier": "persuasion",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.005,
+      "template_tier": "plain",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.005,
+      "template_tier": "roleplay",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.01,
+      "template_tier": "data_stealing",
+      "sign_flip": 2.2222
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.01,
+      "template_tier": "direct_harm",
+      "sign_flip": 1.4545
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.01,
+      "template_tier": "persuasion",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.01,
+      "template_tier": "plain",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.01,
+      "template_tier": "roleplay",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.02,
+      "template_tier": "data_stealing",
+      "sign_flip": 6.2222
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.02,
+      "template_tier": "direct_harm",
+      "sign_flip": 2.5455
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.02,
+      "template_tier": "persuasion",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.02,
+      "template_tier": "plain",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.02,
+      "template_tier": "roleplay",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.04,
+      "template_tier": "data_stealing",
+      "sign_flip": 10.2222
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.04,
+      "template_tier": "direct_harm",
+      "sign_flip": 4.7273
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.04,
+      "template_tier": "persuasion",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.04,
+      "template_tier": "plain",
+      "sign_flip": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.04,
+      "template_tier": "roleplay",
+      "sign_flip": 0.0
+    }
+  ],
+  "dose_response_jailbreak_only": [
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.0025,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.005,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.01,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.02,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.04,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.0025,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.005,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.01,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.02,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.04,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.0025,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.005,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.01,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.02,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.04,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.0025,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.005,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.01,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.02,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.04,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.0025,
+      "n": 1500,
+      "sign_flip_pct": 0.0,
+      "refusal_lost_pct": 0.0
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.005,
+      "n": 1500,
+      "sign_flip_pct": 0.1333,
+      "refusal_lost_pct": 0.1333
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.01,
+      "n": 1500,
+      "sign_flip_pct": 0.4,
+      "refusal_lost_pct": 0.2
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.02,
+      "n": 1500,
+      "sign_flip_pct": 1.6667,
+      "refusal_lost_pct": 0.8667
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.04,
+      "n": 1500,
+      "sign_flip_pct": 3.2667,
+      "refusal_lost_pct": 2.0
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.0025,
+      "n": 1500,
+      "sign_flip_pct": 0.2,
+      "refusal_lost_pct": 0.2
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.005,
+      "n": 1500,
+      "sign_flip_pct": 0.3333,
+      "refusal_lost_pct": 0.2667
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.01,
+      "n": 1500,
+      "sign_flip_pct": 0.4667,
+      "refusal_lost_pct": 0.4
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.02,
+      "n": 1500,
+      "sign_flip_pct": 0.7333,
+      "refusal_lost_pct": 0.6
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.04,
+      "n": 1500,
+      "sign_flip_pct": 1.9333,
+      "refusal_lost_pct": 1.1333
+    }
+  ],
+  "m0_predicts_studyb_signflip": [
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.0025,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.005,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.01,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.02,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "falcon3-1b",
+      "alpha": 0.04,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.0025,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.005,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.01,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.02,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "falcon3-3b",
+      "alpha": 0.04,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.0025,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.005,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.01,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.02,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "llama3.2-1b",
+      "alpha": 0.04,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.0025,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.005,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.01,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.02,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "llama3.2-3b",
+      "alpha": 0.04,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.0025,
+      "n": 1500,
+      "n_flips": 0,
+      "auc_m0_predicts_signflip": NaN
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.005,
+      "n": 1500,
+      "n_flips": 2,
+      "auc_m0_predicts_signflip": 0.9773
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.01,
+      "n": 1500,
+      "n_flips": 6,
+      "auc_m0_predicts_signflip": 0.9808
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.02,
+      "n": 1500,
+      "n_flips": 25,
+      "auc_m0_predicts_signflip": 0.978
+    },
+    {
+      "model_key": "qwen2.5-1.5b",
+      "alpha": 0.04,
+      "n": 1500,
+      "n_flips": 49,
+      "auc_m0_predicts_signflip": 0.9681
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.0025,
+      "n": 1500,
+      "n_flips": 3,
+      "auc_m0_predicts_signflip": 0.9526
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.005,
+      "n": 1500,
+      "n_flips": 5,
+      "auc_m0_predicts_signflip": 0.9532
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.01,
+      "n": 1500,
+      "n_flips": 7,
+      "auc_m0_predicts_signflip": 0.9528
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.02,
+      "n": 1500,
+      "n_flips": 11,
+      "auc_m0_predicts_signflip": 0.9523
+    },
+    {
+      "model_key": "qwen2.5-3b",
+      "alpha": 0.04,
+      "n": 1500,
+      "n_flips": 29,
+      "auc_m0_predicts_signflip": 0.9601
+    }
+  ],
+  "g_summary": {
+    "median_lin_r2": 0.9973,
+    "frac_lin_r2_above_0.9": 0.9663,
+    "g_by_model": {
+      "falcon3-1b": 14.8344,
+      "falcon3-3b": 20.3375,
+      "llama3.2-1b": 28.9404,
+      "llama3.2-3b": 35.2184,
+      "qwen2.5-1.5b": 14.5281,
+      "qwen2.5-3b": 26.414
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "config": {
+    "mode": "gguf",
+    "model_keys": [
+      "qwen2.5-3b"
+    ],
+    "methods": [
+      "gguf"
+    ],
+    "cells": [
+      [
+        "qwen2.5-3b",
+        "gguf"
+      ]
+    ],
+    "max_new_tokens": 100,
+    "limit_prompts": null,
+    "diagnosis_controls_per_cell": 0,
+    "llama_awq_check": false,
+    "llama_awq_repo": "AMead10/Llama-3.2-3B-Instruct-AWQ",
+    "llama_awq_n_prompts": 40,
+    "dataset_dir": "/kaggle/input/slm-quant-attack-prompts",
+    "out_dir": "/kaggle/working",
+    "gguf_n_gpu_layers": 0
+  },
+  "cells": {
+    "qwen2.5-3b/gguf": {
+      "n": 400,
+      "n_empty": 0,
+      "finish_reasons": {
+        "stop": 212,
+        "length": 188
+      },
+      "seconds": 6142.5,
+      "n_gpu_layers": 0,
+      "repo": "Qwen/Qwen2.5-3B-Instruct-GGUF",
+      "decoding_used_by_this_rerun": "greedy (temperature=0.0, explicit)"
+    }
+  },
+  "started": 1787894815.0739117,
+  "torch": "2.10.0+cpu",
+  "finished": 1787900958.7830946,
+  "minutes": 102.4
+}

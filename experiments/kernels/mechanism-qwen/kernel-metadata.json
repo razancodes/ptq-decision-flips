@@ -1,0 +1,15 @@
+{
+  "id": "razanml/slm-mechanism-qwen",
+  "title": "SLM mechanism qwen",
+  "code_file": "mechanism.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "razanml/slm-quant-attack-prompts"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

@@ -1,0 +1,58 @@
+{
+  "n_comparisons": 1791,
+  "n_text_differs": 93,
+  "pct_text_differs": 5.1926,
+  "pct_text_identical": 94.8074,
+  "n_label_flips": 0,
+  "by_size": {
+    "1B": {
+      "n": 891,
+      "n_differ": 42,
+      "pct_differ": 4.714
+    },
+    "3B": {
+      "n": 900,
+      "n_differ": 51,
+      "pct_differ": 5.667
+    }
+  },
+  "by_tier": {
+    "persuasion": {
+      "n": 594,
+      "n_differ": 48,
+      "pct_differ": 8.081
+    },
+    "plain": {
+      "n": 600,
+      "n_differ": 21,
+      "pct_differ": 3.5
+    },
+    "roleplay": {
+      "n": 597,
+      "n_differ": 24,
+      "pct_differ": 4.02
+    }
+  },
+  "by_seed": {
+    "1000": {
+      "n": 597,
+      "n_differ": 31,
+      "pct_differ": 5.193
+    },
+    "1001": {
+      "n": 597,
+      "n_differ": 31,
+      "pct_differ": 5.193
+    },
+    "1002": {
+      "n": 597,
+      "n_differ": 31,
+      "pct_differ": 5.193
+    }
+  },
+  "flips_where_text_changed": 0,
+  "n_where_text_changed": 93,
+  "flips_where_text_identical": 0,
+  "n_where_text_identical": 1698,
+  "verdict": "REAL: the null rests on a majority-changed-text sample"
+}

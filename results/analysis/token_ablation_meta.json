@@ -1,0 +1,119 @@
+{
+  "config": {
+    "models": [
+      "qwen2.5-1.5b",
+      "qwen2.5-3b",
+      "falcon3-1b",
+      "falcon3-3b"
+    ],
+    "limit_prompts": null,
+    "jailbreak_only": true,
+    "dataset_dir": "/kaggle/input/slm-quant-attack-prompts",
+    "out_dir": "/kaggle/working"
+  },
+  "models": {
+    "qwen2.5-1.5b": {
+      "repo": "Qwen/Qwen2.5-1.5B-Instruct",
+      "default_refusal_first_ids": [
+        40,
+        40,
+        40
+      ],
+      "default_refusal_first_tokens": [
+        "I",
+        "I",
+        "I"
+      ],
+      "default_refusal_n_distinct": 1,
+      "alt_refusal_first_ids": [
+        19152,
+        30040,
+        40
+      ],
+      "alt_refusal_first_tokens": [
+        "Sorry",
+        "Unfortunately",
+        "I"
+      ],
+      "alt_refusal_n_distinct": 3
+    },
+    "qwen2.5-3b": {
+      "repo": "Qwen/Qwen2.5-3B-Instruct",
+      "default_refusal_first_ids": [
+        40,
+        40,
+        40
+      ],
+      "default_refusal_first_tokens": [
+        "I",
+        "I",
+        "I"
+      ],
+      "default_refusal_n_distinct": 1,
+      "alt_refusal_first_ids": [
+        19152,
+        30040,
+        40
+      ],
+      "alt_refusal_first_tokens": [
+        "Sorry",
+        "Unfortunately",
+        "I"
+      ],
+      "alt_refusal_n_distinct": 3
+    },
+    "falcon3-1b": {
+      "repo": "tiiuae/Falcon3-1B-Instruct",
+      "default_refusal_first_ids": [
+        2064,
+        2064,
+        2064
+      ],
+      "default_refusal_first_tokens": [
+        "I",
+        "I",
+        "I"
+      ],
+      "default_refusal_n_distinct": 1,
+      "alt_refusal_first_ids": [
+        20831,
+        18926,
+        2064
+      ],
+      "alt_refusal_first_tokens": [
+        "Sorry",
+        "Unfortunately",
+        "I"
+      ],
+      "alt_refusal_n_distinct": 3
+    },
+    "falcon3-3b": {
+      "repo": "tiiuae/Falcon3-3B-Instruct",
+      "default_refusal_first_ids": [
+        2064,
+        2064,
+        2064
+      ],
+      "default_refusal_first_tokens": [
+        "I",
+        "I",
+        "I"
+      ],
+      "default_refusal_n_distinct": 1,
+      "alt_refusal_first_ids": [
+        20831,
+        18926,
+        2064
+      ],
+      "alt_refusal_first_tokens": [
+        "Sorry",
+        "Unfortunately",
+        "I"
+      ],
+      "alt_refusal_n_distinct": 3
+    }
+  },
+  "skipped": {},
+  "torch": "2.10.0+cu128",
+  "n_models_done": 4
+}

@@ -1,0 +1,34 @@
+{
+  "n_failing_diagnosed": 29,
+  "n_controls": 40,
+  "a_padding": {
+    "note": "Study A ran batch=1 unpadded; padded batches are a probe, not the original condition",
+    "left_n_gen_zero": 0,
+    "right_n_gen_zero": 0
+  },
+  "b_double_template": {
+    "ids_paths_identical_all": true,
+    "bos_count_original_max": -1,
+    "bos_count_repaired_max": -1,
+    "any_template_marker_in_prompt": false
+  },
+  "c_eos_first": {
+    "reproduced_empty_original_path": 7,
+    "first_token_was_eos": 7,
+    "argmax_at_step1_is_eos": 7,
+    "controls_argmax_is_eos": 0
+  },
+  "d_length_truncation": {
+    "max_input_tokens": 66,
+    "max_position_embeddings": 32768,
+    "empty_still_at_budget_200": 7
+  },
+  "e_non_finite": {
+    "rows_with_non_finite_logits": 0,
+    "rows_with_non_finite_hidden": 0
+  },
+  "repaired_config_removes_empty": {
+    "n_still_empty": 7,
+    "of": 29
+  }
+}

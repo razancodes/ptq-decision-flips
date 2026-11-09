@@ -1,0 +1,365 @@
+{
+  "decoding_map": {
+    "1B-gptq": {
+      "regime": "greedy",
+      "temperature": 0.0
+    },
+    "3B-gptq": {
+      "regime": "greedy",
+      "temperature": 0.0
+    },
+    "1B-gguf": {
+      "regime": "sampled",
+      "temperature": 0.2
+    },
+    "3B-gguf": {
+      "regime": "sampled",
+      "temperature": 0.2
+    },
+    "1B-awq": {
+      "regime": "sampled",
+      "temperature": 1.0
+    },
+    "3B-awq": {
+      "regime": "sampled",
+      "temperature": 1.0
+    }
+  },
+  "all_cells": {
+    "label": "all six cells (the current \u00a74.7 scope)",
+    "n_pairs": 1763,
+    "n_flips": 112,
+    "flip_rate_pct": 6.3528,
+    "wilson95": [
+      5.3064,
+      7.589
+    ],
+    "broke": 107,
+    "restore": 5,
+    "pct_degrading": 95.54,
+    "m0_auc": 0.9186,
+    "m0_ci": [
+      0.8993,
+      0.9356
+    ],
+    "m0_auc_length_matched": 0.8837,
+    "m0_ci_length_matched": [
+      0.8567,
+      0.9075
+    ],
+    "fp16_refused_auc": 0.9277,
+    "fp16_refused_n": 1734,
+    "tier_flip_rate_pct": {
+      "persuasion": 9.9303,
+      "plain": 1.1686,
+      "roleplay": 8.1356
+    },
+    "tier_n": {
+      "persuasion": 574,
+      "plain": 599,
+      "roleplay": 590
+    },
+    "by_cell_flip_rate_pct": {
+      "1B-awq": 3.9855,
+      "1B-gguf": 1.3605,
+      "1B-gptq": 1.0135,
+      "3B-awq": 13.4228,
+      "3B-gguf": 10.3333,
+      "3B-gptq": 7.6923
+    }
+  },
+  "greedy_only": {
+    "label": "confound-free: greedy fp16 vs greedy GPTQ",
+    "n_pairs": 595,
+    "n_flips": 26,
+    "flip_rate_pct": 4.3697,
+    "wilson95": [
+      2.9992,
+      6.3257
+    ],
+    "broke": 23,
+    "restore": 3,
+    "pct_degrading": 88.46,
+    "m0_auc": 0.9379,
+    "m0_ci": [
+      0.9084,
+      0.9613
+    ],
+    "m0_auc_length_matched": 0.9172,
+    "m0_ci_length_matched": [
+      0.8872,
+      0.9464
+    ],
+    "fp16_refused_auc": 0.9425,
+    "fp16_refused_n": 585,
+    "tier_flip_rate_pct": {
+      "persuasion": 6.5657,
+      "plain": 1.005,
+      "roleplay": 5.5556
+    },
+    "tier_n": {
+      "persuasion": 198,
+      "plain": 199,
+      "roleplay": 198
+    },
+    "by_cell_flip_rate_pct": {
+      "1B-gptq": 1.0135,
+      "3B-gptq": 7.6923
+    }
+  },
+  "sampled_only": {
+    "label": "sampled quantized side (AWQ T=1.0, GGUF T=0.2)",
+    "n_pairs": 1168,
+    "n_flips": 86,
+    "flip_rate_pct": 7.363,
+    "wilson95": [
+      6.0009,
+      9.0047
+    ],
+    "broke": 84,
+    "restore": 2,
+    "pct_degrading": 97.67,
+    "m0_auc": 0.9146,
+    "m0_ci": [
+      0.89,
+      0.9343
+    ],
+    "m0_auc_length_matched": 0.8759,
+    "m0_ci_length_matched": [
+      0.8424,
+      0.9064
+    ],
+    "fp16_refused_auc": 0.926,
+    "fp16_refused_n": 1149,
+    "tier_flip_rate_pct": {
+      "persuasion": 11.7021,
+      "plain": 1.25,
+      "roleplay": 9.4388
+    },
+    "tier_n": {
+      "persuasion": 376,
+      "plain": 400,
+      "roleplay": 392
+    },
+    "by_cell_flip_rate_pct": {
+      "1B-awq": 3.9855,
+      "1B-gguf": 1.3605,
+      "3B-awq": 13.4228,
+      "3B-gguf": 10.3333
+    }
+  },
+  "method_gptq": {
+    "label": "gptq",
+    "n_pairs": 595,
+    "n_flips": 26,
+    "flip_rate_pct": 4.3697,
+    "wilson95": [
+      2.9992,
+      6.3257
+    ],
+    "broke": 23,
+    "restore": 3,
+    "pct_degrading": 88.46,
+    "m0_auc": 0.9379,
+    "m0_ci": [
+      0.9073,
+      0.9607
+    ],
+    "m0_auc_length_matched": 0.9172,
+    "m0_ci_length_matched": [
+      0.8838,
+      0.9455
+    ],
+    "fp16_refused_auc": 0.9425,
+    "fp16_refused_n": 585,
+    "tier_flip_rate_pct": {
+      "persuasion": 6.5657,
+      "plain": 1.005,
+      "roleplay": 5.5556
+    },
+    "tier_n": {
+      "persuasion": 198,
+      "plain": 199,
+      "roleplay": 198
+    },
+    "by_cell_flip_rate_pct": {
+      "1B-gptq": 1.0135,
+      "3B-gptq": 7.6923
+    }
+  },
+  "method_awq": {
+    "label": "awq",
+    "n_pairs": 574,
+    "n_flips": 51,
+    "flip_rate_pct": 8.885,
+    "wilson95": [
+      6.8224,
+      11.4943
+    ],
+    "broke": 50,
+    "restore": 1,
+    "pct_degrading": 98.04,
+    "m0_auc": 0.8976,
+    "m0_ci": [
+      0.862,
+      0.9276
+    ],
+    "m0_auc_length_matched": 0.847,
+    "m0_ci_length_matched": [
+      0.7929,
+      0.8927
+    ],
+    "fp16_refused_auc": 0.9091,
+    "fp16_refused_n": 565,
+    "tier_flip_rate_pct": {
+      "persuasion": 14.3646,
+      "plain": 1.5,
+      "roleplay": 11.399
+    },
+    "tier_n": {
+      "persuasion": 181,
+      "plain": 200,
+      "roleplay": 193
+    },
+    "by_cell_flip_rate_pct": {
+      "1B-awq": 3.9855,
+      "3B-awq": 13.4228
+    }
+  },
+  "method_gguf": {
+    "label": "gguf",
+    "n_pairs": 594,
+    "n_flips": 35,
+    "flip_rate_pct": 5.8923,
+    "wilson95": [
+      4.2669,
+      8.0845
+    ],
+    "broke": 34,
+    "restore": 1,
+    "pct_degrading": 97.14,
+    "m0_auc": 0.9429,
+    "m0_ci": [
+      0.9194,
+      0.9638
+    ],
+    "m0_auc_length_matched": 0.9206,
+    "m0_ci_length_matched": [
+      0.8894,
+      0.948
+    ],
+    "fp16_refused_auc": 0.9543,
+    "fp16_refused_n": 584,
+    "tier_flip_rate_pct": {
+      "persuasion": 9.2308,
+      "plain": 1.0,
+      "roleplay": 7.5377
+    },
+    "tier_n": {
+      "persuasion": 195,
+      "plain": 200,
+      "roleplay": 199
+    },
+    "by_cell_flip_rate_pct": {
+      "1B-gguf": 1.3605,
+      "3B-gguf": 10.3333
+    }
+  },
+  "format_ordering_vs_temperature": {
+    "cells": [
+      {
+        "size": "1B",
+        "method": "awq",
+        "n": 276,
+        "flips": 11,
+        "rate_pct": 3.9855,
+        "temp": 1.0
+      },
+      {
+        "size": "1B",
+        "method": "gguf",
+        "n": 294,
+        "flips": 4,
+        "rate_pct": 1.3605,
+        "temp": 0.2
+      },
+      {
+        "size": "1B",
+        "method": "gptq",
+        "n": 296,
+        "flips": 3,
+        "rate_pct": 1.0135,
+        "temp": 0.0
+      },
+      {
+        "size": "3B",
+        "method": "awq",
+        "n": 298,
+        "flips": 40,
+        "rate_pct": 13.4228,
+        "temp": 1.0
+      },
+      {
+        "size": "3B",
+        "method": "gguf",
+        "n": 300,
+        "flips": 31,
+        "rate_pct": 10.3333,
+        "temp": 0.2
+      },
+      {
+        "size": "3B",
+        "method": "gptq",
+        "n": 299,
+        "flips": 23,
+        "rate_pct": 7.6923,
+        "temp": 0.0
+      }
+    ],
+    "spearman_rho": 0.4781,
+    "spearman_p": 0.3375018565403647,
+    "note": "within each size the flip-rate ordering awq > gguf > gptq is the same as the effective-temperature ordering 1.0 > 0.2 > 0, so the per-format ordering cannot be read as quantization severity from this data"
+  },
+  "within_size_ordering": {
+    "1B": {
+      "by_temperature": [
+        {
+          "method": "gptq",
+          "temp": 0.0,
+          "rate_pct": 1.0135
+        },
+        {
+          "method": "gguf",
+          "temp": 0.2,
+          "rate_pct": 1.3605
+        },
+        {
+          "method": "awq",
+          "temp": 1.0,
+          "rate_pct": 3.9855
+        }
+      ],
+      "monotone_in_temperature": true
+    },
+    "3B": {
+      "by_temperature": [
+        {
+          "method": "gptq",
+          "temp": 0.0,
+          "rate_pct": 7.6923
+        },
+        {
+          "method": "gguf",
+          "temp": 0.2,
+          "rate_pct": 10.3333
+        },
+        {
+          "method": "awq",
+          "temp": 1.0,
+          "rate_pct": 13.4228
+        }
+      ],
+      "monotone_in_temperature": true
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "razanml/slm-reseed-open",
+  "title": "SLM reseed open",
+  "code_file": "reseed-control.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "razanml/slm-quant-attack-prompts"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

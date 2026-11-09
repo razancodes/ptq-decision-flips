@@ -1,0 +1,1953 @@
+{
+  "config": {
+    "model_keys": [
+      "falcon3-1b",
+      "falcon3-3b"
+    ],
+    "methods": [
+      "awq",
+      "gptq",
+      "gguf"
+    ],
+    "limit_prompts": null,
+    "alpha_equiv_sane_range": [
+      0.002,
+      0.6
+    ],
+    "unbiased_tol_steps": 0.25,
+    "dataset_dir": "/kaggle/input/slm-quant-attack-prompts",
+    "out_dir": "/kaggle/working"
+  },
+  "models": {
+    "falcon3-1b": {
+      "n_head": 8,
+      "n_head_kv": 4,
+      "tie": false,
+      "n_target_tensors": 126,
+      "target_kinds": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ],
+      "fp16_coherence": "The capital of France is Paris.",
+      "awq": {
+        "repo": "tiiuae/Falcon3-1B-Instruct-AWQ",
+        "path": "direct_dequantization",
+        "validations": {
+          "V1_exact_matches": {
+            "n_tensors_alpha_equiv_zero": 3,
+            "kinds": [
+              "embed_tokens",
+              "lm_head",
+              "norm"
+            ]
+          },
+          "V5_range": {
+            "n_targets": 126,
+            "n_outside_range": 10,
+            "range": [
+              0.002,
+              0.6
+            ],
+            "median": 0.453924
+          },
+          "V4_coherence_sample": "The capital of France is Paris."
+        },
+        "gptq_zero_point": {},
+        "n_replaced": 165,
+        "n_skipped": 0,
+        "skipped_examples": [],
+        "seconds": 99.7
+      },
+      "gptq": {
+        "repo": "tiiuae/Falcon3-1B-Instruct-GPTQ-Int4",
+        "path": "direct_dequantization",
+        "validations": {
+          "V2_unbiased_zero_point": {
+            "tensors": 126,
+            "chosen_counts": {
+              "gptq_zero_plus_one=True": 126
+            },
+            "median_bias_in_steps_chosen": 0.0021,
+            "tolerance_steps": 0.25,
+            "n_suspect_both_biased": 0
+          },
+          "V1_exact_matches": {
+            "n_tensors_alpha_equiv_zero": 39,
+            "kinds": [
+              "embed_tokens",
+              "lm_head",
+              "norm"
+            ]
+          },
+          "V5_range": {
+            "n_targets": 126,
+            "n_outside_range": 0,
+            "range": [
+              0.002,
+              0.6
+            ],
+            "median": 0.122152
+          },
+          "V4_coherence_sample": "The capital of France is Paris."
+        },
+        "gptq_zero_point": {
+          "model.layers.0.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0015,
+            "bias_in_steps_zplain": 0.9985,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.0.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.0.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.0.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0024,
+            "bias_in_steps_zplain": 0.9976,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.0.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.0.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0036,
+            "bias_in_steps_zplain": 0.9964,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.0.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0025,
+            "bias_in_steps_zplain": 0.9975,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0025,
+            "bias_in_steps_zplain": 0.9975,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0025,
+            "bias_in_steps_zplain": 0.9975,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0014,
+            "bias_in_steps_zplain": 0.9986,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0015,
+            "bias_in_steps_zplain": 0.9985,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0016,
+            "bias_in_steps_zplain": 0.9984,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0014,
+            "bias_in_steps_zplain": 0.9986,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0016,
+            "bias_in_steps_zplain": 0.9984,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0016,
+            "bias_in_steps_zplain": 0.9984,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0027,
+            "bias_in_steps_zplain": 0.9973,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0014,
+            "bias_in_steps_zplain": 0.9986,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0016,
+            "bias_in_steps_zplain": 0.9984,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0025,
+            "bias_in_steps_zplain": 0.9975,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0024,
+            "bias_in_steps_zplain": 0.9976,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0016,
+            "bias_in_steps_zplain": 0.9984,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0027,
+            "bias_in_steps_zplain": 0.9973,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0025,
+            "bias_in_steps_zplain": 0.9975,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0024,
+            "bias_in_steps_zplain": 0.9976,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0024,
+            "bias_in_steps_zplain": 0.9976,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0016,
+            "bias_in_steps_zplain": 0.9984,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0025,
+            "bias_in_steps_zplain": 0.9975,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0024,
+            "bias_in_steps_zplain": 0.9976,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          }
+        },
+        "n_replaced": 165,
+        "n_skipped": 0,
+        "skipped_examples": [],
+        "seconds": 129.6
+      },
+      "gguf": {
+        "repo": "tiiuae/Falcon3-1B-Instruct-GGUF",
+        "path": "direct_dequantization",
+        "validations": {
+          "V3_permutation": {
+            "n_tensors": 36,
+            "median_alpha_raw": 1.409089,
+            "median_alpha_undone": 0.062454,
+            "separation_x": 22.6,
+            "chosen": "undone"
+          },
+          "V1_exact_matches": {
+            "n_tensors_alpha_equiv_zero": 36,
+            "kinds": [
+              "norm"
+            ]
+          },
+          "V5_range": {
+            "n_targets": 126,
+            "n_outside_range": 0,
+            "range": [
+              0.002,
+              0.6
+            ],
+            "median": 0.063182
+          },
+          "V4_coherence_sample": "The capital of France is Paris."
+        },
+        "file": "Falcon3-1B-Instruct-q4_k_m.gguf",
+        "layout": "same",
+        "quant_types": {
+          "14": 19,
+          "0": 37,
+          "12": 109
+        },
+        "unmapped": [],
+        "n_replaced": 165,
+        "n_skipped": 0,
+        "skipped_examples": [],
+        "seconds": 110.1
+      }
+    },
+    "falcon3-3b": {
+      "n_head": 12,
+      "n_head_kv": 4,
+      "tie": false,
+      "n_target_tensors": 154,
+      "target_kinds": [
+        "down_proj",
+        "gate_proj",
+        "k_proj",
+        "o_proj",
+        "q_proj",
+        "up_proj",
+        "v_proj"
+      ],
+      "fp16_coherence": "The capital of France is Paris.",
+      "awq": {
+        "repo": "tiiuae/Falcon3-3B-Instruct-AWQ",
+        "path": "direct_dequantization",
+        "validations": {
+          "V1_exact_matches": {
+            "n_tensors_alpha_equiv_zero": 3,
+            "kinds": [
+              "embed_tokens",
+              "lm_head",
+              "norm"
+            ]
+          },
+          "V5_range": {
+            "n_targets": 154,
+            "n_outside_range": 18,
+            "range": [
+              0.002,
+              0.6
+            ],
+            "median": 0.479988
+          },
+          "V4_coherence_sample": "The capital of France is Paris."
+        },
+        "gptq_zero_point": {},
+        "n_replaced": 201,
+        "n_skipped": 0,
+        "skipped_examples": [],
+        "seconds": 169.3
+      },
+      "gptq": {
+        "repo": "tiiuae/Falcon3-3B-Instruct-GPTQ-Int4",
+        "path": "direct_dequantization",
+        "validations": {
+          "V2_unbiased_zero_point": {
+            "tensors": 154,
+            "chosen_counts": {
+              "gptq_zero_plus_one=True": 154
+            },
+            "median_bias_in_steps_chosen": 0.002,
+            "tolerance_steps": 0.25,
+            "n_suspect_both_biased": 0
+          },
+          "V1_exact_matches": {
+            "n_tensors_alpha_equiv_zero": 47,
+            "kinds": [
+              "embed_tokens",
+              "lm_head",
+              "norm"
+            ]
+          },
+          "V5_range": {
+            "n_targets": 154,
+            "n_outside_range": 0,
+            "range": [
+              0.002,
+              0.6
+            ],
+            "median": 0.148771
+          },
+          "V4_coherence_sample": "The capital of France is Paris."
+        },
+        "gptq_zero_point": {
+          "model.layers.0.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0014,
+            "bias_in_steps_zplain": 0.9986,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.0.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.0.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.0.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.0.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0015,
+            "bias_in_steps_zplain": 0.9985,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.0.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0029,
+            "bias_in_steps_zplain": 0.9971,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.0.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0015,
+            "bias_in_steps_zplain": 0.9985,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.1.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0013,
+            "bias_in_steps_zplain": 0.9987,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.10.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0011,
+            "bias_in_steps_zplain": 0.9989,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.11.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0011,
+            "bias_in_steps_zplain": 0.9989,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.12.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0016,
+            "bias_in_steps_zplain": 0.9984,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0013,
+            "bias_in_steps_zplain": 0.9987,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.13.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0016,
+            "bias_in_steps_zplain": 0.9984,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0026,
+            "bias_in_steps_zplain": 0.9974,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0015,
+            "bias_in_steps_zplain": 0.9985,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.14.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0015,
+            "bias_in_steps_zplain": 0.9985,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0011,
+            "bias_in_steps_zplain": 0.9989,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.15.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0013,
+            "bias_in_steps_zplain": 0.9987,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0024,
+            "bias_in_steps_zplain": 0.9976,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0015,
+            "bias_in_steps_zplain": 0.9985,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.16.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0012,
+            "bias_in_steps_zplain": 0.9988,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0014,
+            "bias_in_steps_zplain": 0.9986,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.17.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0024,
+            "bias_in_steps_zplain": 0.9976,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.18.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0014,
+            "bias_in_steps_zplain": 0.9986,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.18.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.18.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.18.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.18.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0014,
+            "bias_in_steps_zplain": 0.9986,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.18.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.18.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.19.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0014,
+            "bias_in_steps_zplain": 0.9986,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.19.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.19.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.19.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.19.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0015,
+            "bias_in_steps_zplain": 0.9985,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.19.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.19.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.2.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.20.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0016,
+            "bias_in_steps_zplain": 0.9984,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.20.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.20.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.20.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.20.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0013,
+            "bias_in_steps_zplain": 0.9987,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.20.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.20.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.21.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.21.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.21.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.21.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0024,
+            "bias_in_steps_zplain": 0.9976,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.21.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0011,
+            "bias_in_steps_zplain": 0.9989,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.21.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.21.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0016,
+            "bias_in_steps_zplain": 0.9984,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0023,
+            "bias_in_steps_zplain": 0.9977,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.3.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0015,
+            "bias_in_steps_zplain": 0.9985,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.4.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0016,
+            "bias_in_steps_zplain": 0.9984,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0024,
+            "bias_in_steps_zplain": 0.9976,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0015,
+            "bias_in_steps_zplain": 0.9985,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.5.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0015,
+            "bias_in_steps_zplain": 0.9985,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0016,
+            "bias_in_steps_zplain": 0.9984,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.6.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0016,
+            "bias_in_steps_zplain": 0.9984,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.7.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0015,
+            "bias_in_steps_zplain": 0.9985,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.8.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0018,
+            "bias_in_steps_zplain": 0.9982,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.mlp.down_proj.weight": {
+            "bias_in_steps_zplus1": 0.0017,
+            "bias_in_steps_zplain": 0.9983,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.mlp.gate_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.mlp.up_proj.weight": {
+            "bias_in_steps_zplus1": 0.0021,
+            "bias_in_steps_zplain": 0.9979,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.self_attn.k_proj.weight": {
+            "bias_in_steps_zplus1": 0.002,
+            "bias_in_steps_zplain": 0.998,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.self_attn.o_proj.weight": {
+            "bias_in_steps_zplus1": 0.0013,
+            "bias_in_steps_zplain": 0.9987,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.self_attn.q_proj.weight": {
+            "bias_in_steps_zplus1": 0.0022,
+            "bias_in_steps_zplain": 0.9978,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          },
+          "model.layers.9.self_attn.v_proj.weight": {
+            "bias_in_steps_zplus1": 0.0019,
+            "bias_in_steps_zplain": 0.9981,
+            "chosen": "gptq_zero_plus_one=True",
+            "suspect_both_biased": false
+          }
+        },
+        "n_replaced": 201,
+        "n_skipped": 0,
+        "skipped_examples": [],
+        "seconds": 213.8
+      },
+      "gguf": {
+        "repo": "tiiuae/Falcon3-3B-Instruct-GGUF",
+        "path": "direct_dequantization",
+        "validations": {
+          "V3_permutation": {
+            "n_tensors": 44,
+            "median_alpha_raw": 1.408956,
+            "median_alpha_undone": 0.069692,
+            "separation_x": 20.2,
+            "chosen": "undone"
+          },
+          "V1_exact_matches": {
+            "n_tensors_alpha_equiv_zero": 45,
+            "kinds": [
+              "norm"
+            ]
+          },
+          "V5_range": {
+            "n_targets": 154,
+            "n_outside_range": 0,
+            "range": [
+              0.002,
+              0.6
+            ],
+            "median": 0.069593
+          },
+          "V4_coherence_sample": "The capital of France is Paris."
+        },
+        "file": "Falcon3-3B-Instruct-q4_k_m.gguf",
+        "layout": "same",
+        "quant_types": {
+          "14": 21,
+          "0": 45,
+          "12": 135
+        },
+        "unmapped": [],
+        "n_replaced": 201,
+        "n_skipped": 0,
+        "skipped_examples": [],
+        "seconds": 172.0
+      }
+    }
+  }
+}

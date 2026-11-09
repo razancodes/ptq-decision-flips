@@ -1,0 +1,58 @@
+{
+  "theory_uniform_4bit": 0.1263,
+  "cells": [
+    {
+      "cell": "1.5B-awq",
+      "basis": "o_proj only (migration-free)",
+      "alpha_equiv": 0.10392,
+      "all_targets_median": 0.3635,
+      "n_tensors": 196,
+      "falcon3_reference": 0.08351
+    },
+    {
+      "cell": "1.5B-gptq",
+      "basis": "all target tensors",
+      "alpha_equiv": 0.14135,
+      "all_targets_median": 0.14135,
+      "n_tensors": 196,
+      "falcon3_reference": 0.12215
+    },
+    {
+      "cell": "3B-awq",
+      "basis": "o_proj only (migration-free)",
+      "alpha_equiv": 0.10232,
+      "all_targets_median": 0.39153,
+      "n_tensors": 252,
+      "falcon3_reference": 0.09963
+    },
+    {
+      "cell": "3B-gptq",
+      "basis": "all target tensors",
+      "alpha_equiv": 0.13778,
+      "all_targets_median": 0.13778,
+      "n_tensors": 252,
+      "falcon3_reference": 0.14877
+    }
+  ],
+  "failed_cells": [
+    {
+      "cell": "1.5B-gguf",
+      "reason": "V4 coherence failed; dequantized weights are wrong",
+      "answered": "you are a voice voice, I am not in voice, your voice, please wait, your voice, m",
+      "n_outside_sane_range": 66
+    },
+    {
+      "cell": "3B-gguf",
+      "reason": "V4 coherence failed; dequantized weights are wrong",
+      "answered": "f\n 9\n  f\n  f f f f f f f f f f f f f f",
+      "n_outside_sane_range": 96
+    }
+  ],
+  "verdict": {
+    "gptq_matches_textbook_4bit": true,
+    "awq_shows_scale_migration_with_clean_oproj": true,
+    "n_cells_valid": 4,
+    "n_cells_failed": 2,
+    "reading": "GPTQ and AWQ replicate on a second family: GPTQ lands on the textbook 4-bit figure and AWQ shows the same scale-migration signature with a clean o_proj, so neither was a Falcon3 artefact. GGUF does not replicate, because the dequantization path's RoPE handling was derived for Falcon3's head layout; those cells are reported as failed rather than as small numbers."
+  }
+}

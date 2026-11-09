@@ -1,0 +1,13 @@
+{
+  "id": "razanml/slm-token-check",
+  "title": "SLM token check",
+  "code_file": "token-check.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}

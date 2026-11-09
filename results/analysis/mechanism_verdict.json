@@ -1,0 +1,277 @@
+{
+  "Q1_alpha_estimates": {
+    "1B-awq": {
+      "alpha_equiv": 0.08351,
+      "basis": "o_proj only (migration-free)",
+      "all_targets_median": 0.45392,
+      "n_tensors": 126
+    },
+    "1B-gguf": {
+      "alpha_equiv": 0.06318,
+      "basis": "all target tensors",
+      "all_targets_median": 0.06318,
+      "n_tensors": 126
+    },
+    "1B-gptq": {
+      "alpha_equiv": 0.12215,
+      "basis": "all target tensors",
+      "all_targets_median": 0.12215,
+      "n_tensors": 126
+    },
+    "3B-awq": {
+      "alpha_equiv": 0.09963,
+      "basis": "o_proj only (migration-free)",
+      "all_targets_median": 0.47999,
+      "n_tensors": 154
+    },
+    "3B-gguf": {
+      "alpha_equiv": 0.06959,
+      "basis": "all target tensors",
+      "all_targets_median": 0.06959,
+      "n_tensors": 154
+    },
+    "3B-gptq": {
+      "alpha_equiv": 0.14877,
+      "basis": "all target tensors",
+      "all_targets_median": 0.14877,
+      "n_tensors": 154
+    }
+  },
+  "Q1_reference": {
+    "uniform_4bit_over_gaussian": 0.1263,
+    "note": "a k-bit uniform quantizer over a Gaussian gives RMS error ~ (7/2^k)/sqrt(12) in units of std; 4-bit is 0.126. GPTQ lands there, AWQ's o_proj sits below it (group-wise scaling), GGUF sits near the 5-bit value because Q4_K_M is a mixed scheme that stores some tensors at Q6_K."
+  },
+  "Q2_variance_model": {
+    "1B-awq": {
+      "alpha_equiv": 0.08351,
+      "g_median": 15.3685,
+      "predicted_sd": 1.28343,
+      "observed_sd": 0.87421,
+      "ratio_obs_over_pred": 0.6811,
+      "observed_mean": 1.06385,
+      "mean_over_sd": 1.2169
+    },
+    "1B-gguf": {
+      "alpha_equiv": 0.06318,
+      "g_median": 15.3685,
+      "predicted_sd": 0.97098,
+      "observed_sd": 0.6861,
+      "ratio_obs_over_pred": 0.7066,
+      "observed_mean": 0.01257,
+      "mean_over_sd": 0.0183
+    },
+    "1B-gptq": {
+      "alpha_equiv": 0.12215,
+      "g_median": 15.3685,
+      "predicted_sd": 1.87727,
+      "observed_sd": 0.99098,
+      "ratio_obs_over_pred": 0.5279,
+      "observed_mean": -0.57686,
+      "mean_over_sd": -0.5821
+    },
+    "3B-awq": {
+      "alpha_equiv": 0.09963,
+      "g_median": 18.698,
+      "predicted_sd": 1.86288,
+      "observed_sd": 0.93549,
+      "ratio_obs_over_pred": 0.5022,
+      "observed_mean": -1.97602,
+      "mean_over_sd": -2.1123
+    },
+    "3B-gguf": {
+      "alpha_equiv": 0.06959,
+      "g_median": 18.698,
+      "predicted_sd": 1.3012,
+      "observed_sd": 1.30913,
+      "ratio_obs_over_pred": 1.0061,
+      "observed_mean": -0.56395,
+      "mean_over_sd": -0.4308
+    },
+    "3B-gptq": {
+      "alpha_equiv": 0.14877,
+      "g_median": 18.698,
+      "predicted_sd": 2.78171,
+      "observed_sd": 1.5567,
+      "ratio_obs_over_pred": 0.5596,
+      "observed_mean": -1.14051,
+      "mean_over_sd": -0.7326
+    }
+  },
+  "Q2_verdict": {
+    "ratios": [
+      0.6811,
+      0.7066,
+      0.5279,
+      0.5022,
+      1.0061,
+      0.5596
+    ],
+    "median_ratio": 0.6203,
+    "all_within_2x": true,
+    "reading": "SD(delta_m) tracks g*alpha_equiv within a factor of two in every cell once AWQ's alpha is taken migration-free. The first-order VARIANCE model is in regime."
+  },
+  "Q3_zero_crossing_model": {
+    "1B-awq": {
+      "alpha_equiv": 0.08351,
+      "predicted_flip_pct_zero_crossing": 0.028687,
+      "observed_flip_pct": 3.9855,
+      "ratio_observed_over_predicted": 138.9
+    },
+    "1B-gguf": {
+      "alpha_equiv": 0.06318,
+      "predicted_flip_pct_zero_crossing": 0.002995,
+      "observed_flip_pct": 1.3605,
+      "ratio_observed_over_predicted": 454.2
+    },
+    "1B-gptq": {
+      "alpha_equiv": 0.12215,
+      "predicted_flip_pct_zero_crossing": 0.289043,
+      "observed_flip_pct": 1.0135,
+      "ratio_observed_over_predicted": 3.5
+    },
+    "3B-awq": {
+      "alpha_equiv": 0.09963,
+      "predicted_flip_pct_zero_crossing": 0.161527,
+      "observed_flip_pct": 13.4228,
+      "ratio_observed_over_predicted": 83.1
+    },
+    "3B-gguf": {
+      "alpha_equiv": 0.06959,
+      "predicted_flip_pct_zero_crossing": 0.030012,
+      "observed_flip_pct": 10.3333,
+      "ratio_observed_over_predicted": 344.3
+    },
+    "3B-gptq": {
+      "alpha_equiv": 0.14877,
+      "predicted_flip_pct_zero_crossing": 0.708914,
+      "observed_flip_pct": 7.6923,
+      "ratio_observed_over_predicted": 10.9
+    }
+  },
+  "Q3_prompt_level": {
+    "1B-awq": {
+      "n": 276,
+      "flips": 11,
+      "auc_delta_m_predicts_flip": 0.5123,
+      "ci": [
+        0.3598,
+        0.662
+      ],
+      "auc_m0_predicts_flip": 0.8455,
+      "auc_m_quant_predicts_flip": 0.8666,
+      "mean_delta_m_flipped": 1.1026,
+      "mean_delta_m_not_flipped": 0.9912
+    },
+    "1B-gguf": {
+      "n": 294,
+      "flips": 4,
+      "note": "too few flips for a stable AUC"
+    },
+    "1B-gptq": {
+      "n": 296,
+      "flips": 3,
+      "note": "too few flips for a stable AUC"
+    },
+    "3B-awq": {
+      "n": 298,
+      "flips": 40,
+      "auc_delta_m_predicts_flip": 0.4806,
+      "ci": [
+        0.3599,
+        0.598
+      ],
+      "auc_m0_predicts_flip": 0.9275,
+      "auc_m_quant_predicts_flip": 0.9236,
+      "mean_delta_m_flipped": -2.0562,
+      "mean_delta_m_not_flipped": -1.9504
+    },
+    "3B-gguf": {
+      "n": 300,
+      "flips": 31,
+      "auc_delta_m_predicts_flip": 0.2556,
+      "ci": [
+        0.1571,
+        0.3593
+      ],
+      "auc_m0_predicts_flip": 0.9664,
+      "auc_m_quant_predicts_flip": 0.9623,
+      "mean_delta_m_flipped": -1.7351,
+      "mean_delta_m_not_flipped": -0.429
+    },
+    "3B-gptq": {
+      "n": 299,
+      "flips": 23,
+      "auc_delta_m_predicts_flip": 0.3373,
+      "ci": [
+        0.2055,
+        0.4819
+      ],
+      "auc_m0_predicts_flip": 0.9671,
+      "auc_m_quant_predicts_flip": 0.9535,
+      "mean_delta_m_flipped": -2.1115,
+      "mean_delta_m_not_flipped": -1.0641
+    }
+  },
+  "Q3_prompt_level_pooled": {
+    "n": 1763,
+    "flips": 112,
+    "auc_delta_m": 0.3105,
+    "ci_delta_m": [
+      0.2517,
+      0.3709
+    ],
+    "auc_m0": 0.9186,
+    "auc_m_quant": 0.9233,
+    "mean_delta_m_flipped": -1.5975,
+    "mean_delta_m_not_flipped": -0.4917
+  },
+  "Q3_cell_level": {
+    "cells": [
+      {
+        "cell": "1B-awq",
+        "mean_delta_m": 1.06385,
+        "sd_delta_m": 0.87421,
+        "flip_pct": 3.9855
+      },
+      {
+        "cell": "1B-gguf",
+        "mean_delta_m": 0.01257,
+        "sd_delta_m": 0.6861,
+        "flip_pct": 1.3605
+      },
+      {
+        "cell": "1B-gptq",
+        "mean_delta_m": -0.57686,
+        "sd_delta_m": 0.99098,
+        "flip_pct": 1.0135
+      },
+      {
+        "cell": "3B-awq",
+        "mean_delta_m": -1.97602,
+        "sd_delta_m": 0.93549,
+        "flip_pct": 13.4228
+      },
+      {
+        "cell": "3B-gguf",
+        "mean_delta_m": -0.56395,
+        "sd_delta_m": 1.30913,
+        "flip_pct": 10.3333
+      },
+      {
+        "cell": "3B-gptq",
+        "mean_delta_m": -1.14051,
+        "sd_delta_m": 1.5567,
+        "flip_pct": 7.6923
+      }
+    ],
+    "pearson_mean_shift_vs_flip_rate": [
+      -0.6718,
+      0.14389000260239612
+    ],
+    "pearson_sd_vs_flip_rate": [
+      0.4323,
+      0.39198272911158116
+    ]
+  },
+  "studyb_control_mean_over_sd": -0.06118458993970743
+}

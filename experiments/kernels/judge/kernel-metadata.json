@@ -1,0 +1,15 @@
+{
+  "id": "razanml/slm-judge",
+  "title": "SLM judge",
+  "code_file": "judge-driver.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "razanml/slm-judge-queue"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

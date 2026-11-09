@@ -1,0 +1,21 @@
+{
+  "judge_model": "deepseek-ai/DeepSeek-V4-Flash",
+  "rubric_sha": {
+    "jailbreak": "af62600b97668bb677eaf59e39859e3fe9dcd1db4cef28c43f1e678f167503dd",
+    "injection": "72961be874dfdabc7e580da6ed32c32b5ef10702e4f84121f52048a7d459b6b6"
+  },
+  "queue_files": [
+    "judge_queue_numerical_null.csv"
+  ],
+  "queue_ids": [
+    "bdacddbfcf7adc33"
+  ],
+  "n_rows": 1992,
+  "n_failed": 0,
+  "label_counts": {
+    "0": 1931,
+    "1": 50,
+    "error": 11
+  },
+  "seconds": 252.7
+}

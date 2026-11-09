@@ -1,0 +1,124 @@
+{
+ "_about": "Hugging Face commit of every checkpoint behind the paper's numbers. 'kernel_log': the commit appears in the Kaggle run log. 'head_predates_runs': not logged, but the repo has had no commit since head_date, before any run (Aug-Sep 2026), so the head is what ran. Load with from_pretrained(repo, revision=commit) or hf_hub_download(..., revision=commit).",
+ "checkpoints": {
+  "AMead10/Llama-3.2-3B-Instruct-AWQ": {
+   "commit": "df494d4903f031dadaeb40434529f1c01efcd130",
+   "head_date": "2024-09-25",
+   "evidence": "kernel_log"
+  },
+  "Qwen/Qwen2.5-1.5B-Instruct": {
+   "commit": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+   "head_date": "2024-09-25",
+   "evidence": "kernel_log"
+  },
+  "Qwen/Qwen2.5-1.5B-Instruct-AWQ": {
+   "commit": "3ecffa0ceb27851800f45519bab9c457a04405e1",
+   "head_date": "2024-10-09",
+   "evidence": "kernel_log"
+  },
+  "Qwen/Qwen2.5-1.5B-Instruct-GGUF": {
+   "commit": "91cad51170dc346986eccefdc2dd33a9da36ead9",
+   "head_date": "2024-09-20",
+   "evidence": "head_predates_runs"
+  },
+  "Qwen/Qwen2.5-1.5B-Instruct-GPTQ-Int4": {
+   "commit": "4f5a0e31008e2966e8f787964bcc4e1105e03dc3",
+   "head_date": "2024-10-09",
+   "evidence": "kernel_log"
+  },
+  "Qwen/Qwen2.5-3B-Instruct": {
+   "commit": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+   "head_date": "2024-09-25",
+   "evidence": "kernel_log"
+  },
+  "Qwen/Qwen2.5-3B-Instruct-AWQ": {
+   "commit": "3559b226e8ce77211e2c1bd7ddfb7686fec4d6dd",
+   "head_date": "2024-10-09",
+   "evidence": "kernel_log"
+  },
+  "Qwen/Qwen2.5-3B-Instruct-GGUF": {
+   "commit": "7dabda4d13d513e3e842b20f0d435c732f172cbe",
+   "head_date": "2024-09-20",
+   "evidence": "head_predates_runs"
+  },
+  "Qwen/Qwen2.5-3B-Instruct-GPTQ-Int4": {
+   "commit": "68c4276063d1496cdf13d0b8e8221f899bfa77f7",
+   "head_date": "2024-10-09",
+   "evidence": "kernel_log"
+  },
+  "bartowski/Llama-3.2-1B-Instruct-GGUF": {
+   "commit": "067b946cf014b7c697f3654f621d577a3e3afd1c",
+   "head_date": "2024-10-08",
+   "evidence": "head_predates_runs"
+  },
+  "bartowski/Llama-3.2-3B-Instruct-GGUF": {
+   "commit": "5ab33fa94d1d04e903623ae72c95d1696f09f9e8",
+   "head_date": "2024-10-08",
+   "evidence": "head_predates_runs"
+  },
+  "clowman/Llama-3.2-1B-Instruct-AWQ-Int4": {
+   "commit": "bae0096886a173e6bc89018a4e9c8326b356a7e8",
+   "head_date": "2025-04-02",
+   "evidence": "kernel_log"
+  },
+  "clowman/Llama-3.2-1B-Instruct-GPTQ-Int4": {
+   "commit": "48f0cf518d14afbbf6f4d9bcdb8849131273bc73",
+   "head_date": "2025-04-02",
+   "evidence": "kernel_log"
+  },
+  "meta-llama/Llama-3.2-1B-Instruct": {
+   "commit": null,
+   "evidence": "gated repo; resolved 'main' at run time, commit not logged",
+   "verify": "with access: HfApi().list_repo_commits(repo) and take the head as of 2026-08"
+  },
+  "meta-llama/Llama-3.2-3B-Instruct": {
+   "commit": "0cb88a4f764b7a12671c53f0838cd831a0843b95",
+   "evidence": "kernel_log"
+  },
+  "shuyuej/Llama-3.2-3B-Instruct-GPTQ": {
+   "commit": "dd5a311f040728fbc612eb03c8dadfae0a90552f",
+   "head_date": "2024-09-25",
+   "evidence": "kernel_log"
+  },
+  "tiiuae/Falcon3-1B-Instruct": {
+   "commit": "28ba2251970a01dd1edc7ba7dad2eb71216ccfdf",
+   "head_date": "2025-01-10",
+   "evidence": "kernel_log"
+  },
+  "tiiuae/Falcon3-1B-Instruct-AWQ": {
+   "commit": "3f45f46fd968e13fbdbdd718b43e8985a1f58f77",
+   "head_date": "2025-01-13",
+   "evidence": "kernel_log"
+  },
+  "tiiuae/Falcon3-1B-Instruct-GGUF": {
+   "commit": "fc404df7cfbd32eaefbcbeb2079aba684e894d39",
+   "head_date": "2025-01-14",
+   "evidence": "head_predates_runs"
+  },
+  "tiiuae/Falcon3-1B-Instruct-GPTQ-Int4": {
+   "commit": "d6b50a97cd5b98b6daf5f58a48148737de450ee7",
+   "head_date": "2025-01-13",
+   "evidence": "kernel_log"
+  },
+  "tiiuae/Falcon3-3B-Instruct": {
+   "commit": "411bb94318f94f7a5735b77109f456b1e74b42a1",
+   "head_date": "2025-01-10",
+   "evidence": "kernel_log"
+  },
+  "tiiuae/Falcon3-3B-Instruct-AWQ": {
+   "commit": "ff2b2c500a7727b851c13f670ff4ddfbb6165e1f",
+   "head_date": "2025-01-13",
+   "evidence": "kernel_log"
+  },
+  "tiiuae/Falcon3-3B-Instruct-GGUF": {
+   "commit": "142f28a7f0ec90e701157ec3c4e9842e9471dfcd",
+   "head_date": "2025-01-14",
+   "evidence": "head_predates_runs"
+  },
+  "tiiuae/Falcon3-3B-Instruct-GPTQ-Int4": {
+   "commit": "8437693c8ce2b2c9c60ff98b26ef8d20f90a1d5e",
+   "head_date": "2025-01-13",
+   "evidence": "kernel_log"
+  }
+ }
+}

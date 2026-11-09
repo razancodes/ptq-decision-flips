@@ -1,0 +1,193 @@
+{
+  "config": {
+    "mode": "hf",
+    "model_keys": [
+      "llama3.2-1b",
+      "llama3.2-3b",
+      "qwen2.5-1.5b",
+      "qwen2.5-3b"
+    ],
+    "methods": [
+      "awq",
+      "fp16",
+      "gptq"
+    ],
+    "cells": [
+      [
+        "qwen2.5-1.5b",
+        "fp16"
+      ],
+      [
+        "qwen2.5-1.5b",
+        "awq"
+      ],
+      [
+        "qwen2.5-3b",
+        "fp16"
+      ],
+      [
+        "llama3.2-1b",
+        "awq"
+      ],
+      [
+        "llama3.2-1b",
+        "gptq"
+      ],
+      [
+        "llama3.2-3b",
+        "awq"
+      ],
+      [
+        "llama3.2-3b",
+        "gptq"
+      ]
+    ],
+    "max_new_tokens": 100,
+    "limit_prompts": null,
+    "diagnosis_controls_per_cell": 0,
+    "llama_awq_check": false,
+    "llama_awq_repo": "AMead10/Llama-3.2-3B-Instruct-AWQ",
+    "llama_awq_n_prompts": 40,
+    "dataset_dir": "/kaggle/input/slm-quant-attack-prompts",
+    "out_dir": "/kaggle/working"
+  },
+  "cells": {
+    "qwen2.5-1.5b/fp16": {
+      "n": 400,
+      "n_empty": 0,
+      "finish_reasons": {
+        "eos": 243,
+        "length": 157
+      },
+      "seconds": 995.8,
+      "n_gpu_layers": null,
+      "repo": "Qwen/Qwen2.5-1.5B-Instruct",
+      "repo_declared_generation_config": {
+        "do_sample": true,
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "eos_token_id": "[151645, 151643]"
+      },
+      "decoding_used_by_this_rerun": "greedy (do_sample=False, explicit)"
+    },
+    "qwen2.5-1.5b/awq": {
+      "n": 400,
+      "n_empty": 0,
+      "finish_reasons": {
+        "eos": 262,
+        "length": 138
+      },
+      "seconds": 1426.7,
+      "n_gpu_layers": null,
+      "repo": "Qwen/Qwen2.5-1.5B-Instruct-AWQ",
+      "repo_declared_generation_config": {
+        "do_sample": true,
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "eos_token_id": "[151645, 151643]"
+      },
+      "decoding_used_by_this_rerun": "greedy (do_sample=False, explicit)"
+    },
+    "qwen2.5-3b/fp16": {
+      "n": 400,
+      "n_empty": 0,
+      "finish_reasons": {
+        "length": 202,
+        "eos": 198
+      },
+      "seconds": 1902.6,
+      "n_gpu_layers": null,
+      "repo": "Qwen/Qwen2.5-3B-Instruct",
+      "repo_declared_generation_config": {
+        "do_sample": true,
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "eos_token_id": "[151645, 151643]"
+      },
+      "decoding_used_by_this_rerun": "greedy (do_sample=False, explicit)"
+    },
+    "llama3.2-1b/awq": {
+      "n": 400,
+      "n_empty": 0,
+      "finish_reasons": {
+        "eos": 364,
+        "length": 36
+      },
+      "seconds": 380.5,
+      "n_gpu_layers": null,
+      "repo": "clowman/Llama-3.2-1B-Instruct-AWQ-Int4",
+      "repo_declared_generation_config": {
+        "do_sample": true,
+        "temperature": 0.6,
+        "top_p": 0.9,
+        "top_k": null,
+        "eos_token_id": "[128001, 128008, 128009]"
+      },
+      "decoding_used_by_this_rerun": "greedy (do_sample=False, explicit)"
+    },
+    "llama3.2-1b/gptq": {
+      "n": 400,
+      "n_empty": 0,
+      "finish_reasons": {
+        "eos": 364,
+        "length": 36
+      },
+      "seconds": 514.2,
+      "n_gpu_layers": null,
+      "repo": "clowman/Llama-3.2-1B-Instruct-GPTQ-Int4",
+      "repo_declared_generation_config": {
+        "do_sample": true,
+        "temperature": 0.6,
+        "top_p": 0.9,
+        "top_k": null,
+        "eos_token_id": "[128001, 128008, 128009]"
+      },
+      "decoding_used_by_this_rerun": "greedy (do_sample=False, explicit)"
+    },
+    "llama3.2-3b/awq": {
+      "n": 400,
+      "n_empty": 0,
+      "finish_reasons": {
+        "eos": 292,
+        "length": 108
+      },
+      "seconds": 1063.9,
+      "n_gpu_layers": null,
+      "repo": "AMead10/Llama-3.2-3B-Instruct-AWQ",
+      "repo_declared_generation_config": {
+        "do_sample": true,
+        "temperature": 0.6,
+        "top_p": 0.9,
+        "top_k": null,
+        "eos_token_id": "[128001, 128008, 128009]"
+      },
+      "decoding_used_by_this_rerun": "greedy (do_sample=False, explicit)"
+    },
+    "llama3.2-3b/gptq": {
+      "n": 400,
+      "n_empty": 0,
+      "finish_reasons": {
+        "eos": 301,
+        "length": 99
+      },
+      "seconds": 1487.2,
+      "n_gpu_layers": null,
+      "repo": "shuyuej/Llama-3.2-3B-Instruct-GPTQ",
+      "repo_declared_generation_config": {
+        "do_sample": true,
+        "temperature": 0.6,
+        "top_p": 0.9,
+        "top_k": null,
+        "eos_token_id": "[128001, 128008, 128009]"
+      },
+      "decoding_used_by_this_rerun": "greedy (do_sample=False, explicit)"
+    }
+  },
+  "started": 1787894621.216579,
+  "torch": "2.10.0+cu128",
+  "finished": 1787902400.7093258,
+  "minutes": 129.7
+}

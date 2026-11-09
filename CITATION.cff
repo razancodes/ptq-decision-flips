@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the paper."
+title: "A First-Order Theory of Decision Flips Under Post-Training Quantization: What It Predicts, and Where It Breaks"
+authors:
+  - family-names: Razan
+    given-names: Muhammed
+    affiliation: B.M.S. College of Engineering
+  - family-names: Shivam
+    given-names: G
+    affiliation: B.M.S. College of Engineering
+license: MIT
+preferred-citation:
+  type: conference-paper
+  title: "A First-Order Theory of Decision Flips Under Post-Training Quantization: What It Predicts, and Where It Breaks"
+  authors:
+    - family-names: Razan
+      given-names: Muhammed
+    - family-names: Shivam
+      given-names: G
+  collection-title: "NeurIPS 2026 Workshop: AXIOM Foundations of Efficient Deep Learning"
+  year: 2026
