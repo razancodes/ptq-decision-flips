@@ -39,7 +39,11 @@ whether the decision flipped, and the pre-quantization refusal margin `m0`.
 Released with the paper *A First-Order Theory of Decision Flips Under
 Post-Training Quantization: What It Predicts, and Where It Breaks* (Muhammed
 Razan, G Shivam; NeurIPS 2026 Workshop: AXIOM Foundations of Efficient Deep
-Learning). Code, raw generations and every analysis: the paper's GitHub repository.
+Learning).
+
+[Paper (OpenReview)](https://openreview.net/forum?id=S5ack3Pfuc) ·
+[NeurIPS 2026 page](https://neurips.cc/virtual/2026/loc/paris/156960) ·
+[Code, raw generations and every analysis (GitHub)](https://github.com/razancodes/ptq-decision-flips)
 
 > **Content warning.** Prompts ask for harmful content and some replies provide it.
 
@@ -98,6 +102,7 @@ on `family` and `size` if your use needs a single license.
                What It Predicts, and Where It Breaks},
   author    = {Razan, Muhammed and Shivam, G},
   booktitle = {NeurIPS 2026 Workshop: AXIOM Foundations of Efficient Deep Learning},
-  year      = {2026}
+  year      = {2026},
+  url       = {https://openreview.net/forum?id=S5ack3Pfuc}
 }
 ```
