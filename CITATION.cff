@@ -10,6 +10,7 @@ authors:
     affiliation: B.M.S. College of Engineering
 license: MIT
 repository-code: "https://github.com/razancodes/ptq-decision-flips"
+url: "https://openreview.net/forum?id=S5ack3Pfuc"
 preferred-citation:
   type: conference-paper
   title: "A First-Order Theory of Decision Flips Under Post-Training Quantization: What It Predicts, and Where It Breaks"
