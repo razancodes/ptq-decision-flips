@@ -28,71 +28,91 @@ extra_gated_fields:
   I have read the license section of the dataset card: checkbox
 ---
 
-# PTQ Refusal Flips
+```text
+██████╗ ████████╗ ██████╗     ███████╗██╗     ██╗██████╗ ███████╗
+██╔══██╗╚══██╔══╝██╔═══██╗    ██╔════╝██║     ██║██╔══██╗██╔════╝
+██████╔╝   ██║   ██║   ██║    █████╗  ██║     ██║██████╔╝███████╗
+██╔═══╝    ██║   ██║▄▄ ██║    ██╔══╝  ██║     ██║██╔═══╝ ╚════██║
+██║        ██║   ╚██████╔╝    ██║     ███████╗██║██║     ███████║
+╚═╝        ╚═╝    ╚══▀▀═╝     ╚═╝     ╚══════╝╚═╝╚═╝     ╚══════╝
+```
 
-Paired refusal decisions from six small instruction-tuned models before and
-after post-training quantization, under stated greedy decoding. Each row is one
-jailbreak prompt answered by an fp16 model and by one of its 4-bit quantized
-checkpoints (AWQ, GPTQ, GGUF Q4_K_M), with LLM-judge labels on both replies,
-whether the decision flipped, and the pre-quantization refusal margin `m0`.
+<h2 align="center">PTQ Refusal Flips</h2>
 
-Released with the paper *A First-Order Theory of Decision Flips Under
-Post-Training Quantization: What It Predicts, and Where It Breaks* (Muhammed
-Razan, G Shivam; NeurIPS 2026 Workshop: AXIOM Foundations of Efficient Deep
-Learning).
+<p align="center">
+  Paired refusal decisions before and after 4-bit post-training quantization<br>
+  <i>Dataset for "A First-Order Theory of Decision Flips Under Post-Training Quantization: What It Predicts, and Where It Breaks"</i><br>
+  <b>Muhammed Razan</b> · <b>G Shivam</b> · NeurIPS 2026 Workshop: AXIOM Foundations of Efficient Deep Learning
+</p>
 
-[Paper (OpenReview)](https://openreview.net/forum?id=S5ack3Pfuc) ·
-[NeurIPS 2026 page](https://neurips.cc/virtual/2026/loc/paris/156960) ·
-[Code, raw generations and every analysis (GitHub)](https://github.com/razancodes/ptq-decision-flips)
+<p align="center">
+  <a href="https://openreview.net/forum?id=S5ack3Pfuc"><img src="https://img.shields.io/badge/OpenReview-S5ack3Pfuc-8c1b13" alt="OpenReview"></a>
+  <a href="https://neurips.cc/virtual/2026/loc/paris/156960"><img src="https://img.shields.io/badge/NeurIPS%202026-AXIOM%20Workshop-6f42c1" alt="NeurIPS 2026"></a>
+  <a href="https://github.com/razancodes/ptq-decision-flips"><img src="https://img.shields.io/badge/GitHub-ptq--decision--flips-181717?logo=github" alt="Code"></a>
+</p>
 
-> **Content warning.** Prompts ask for harmful content and some replies provide it.
+---
 
-## At a glance
+Six small instruction-tuned models answer 300 jailbreak prompts twice: once in
+fp16 and once from a 4-bit checkpoint (AWQ, GPTQ, GGUF Q4_K_M), with greedy
+decoding stated explicitly. Each row is one such pair, with LLM-judge labels on
+both replies, whether the refusal flipped, the fp16 refusal margin `m0`, and a
+blind human label on every flip.
 
-- 5,386 pairs: 3 families (Falcon3, Llama-3.2, Qwen2.5) x 2 sizes x 3 formats x
-  300 jailbreak prompts (100 base requests x plain / roleplay / persuasion
-  framing), minus 14 pairs with an unscorable reply.
-- 267 flips: 138 breaks (fp16 refused, quantized complied) and 129 restores.
-- Every flip was re-labelled blind by a human: 92.9% of judge flips confirmed.
-- Decoding is stated, not inherited: `do_sample=False` in transformers,
-  `temperature=0` in llama.cpp, 100 new tokens.
+## Quickstart
+
+Accept the terms on this page, run `hf auth login`, then:
+
+```python
+from datasets import load_dataset
+
+pairs = load_dataset("razancodes/ptq-refusal-flips", split="train")
+breaks = pairs.filter(lambda r: r["break"] == 1)   # refused at fp16, complied after quantization
+```
+
+## Contents
+
+| | Falcon3 | Llama-3.2 | Qwen2.5 | Total |
+|---|---|---|---|---|
+| Pairs (1B-3B, three formats) | 1,788 | 1,800 | 1,798 | **5,386** |
+| Breaks (refuse → comply) | 59 | 31 | 48 | **138** |
+| Restores (comply → refuse) | 10 | 16 | 103 | **129** |
+
+300 prompts per model and format: 100 harmful requests from AdvBench, each in a
+plain, roleplay and persuasion framing. 14 pairs with an unscorable reply are
+left out. Human review confirmed 92.9% of the judge's flips.
 
 ## Fields
 
 | Field | Meaning |
 |---|---|
 | `family`, `size`, `quant_format` | model and quantization format (`awq`, `gptq`, `gguf`) |
-| `checkpoint`, `checkpoint_commit` | Hugging Face repository of the quantized checkpoint and the commit that ran (null for one gated repo whose commit was not logged) |
+| `checkpoint`, `checkpoint_commit` | quantized checkpoint on the Hub and the commit that ran (null for one gated repo whose commit was not logged) |
 | `prompt_id`, `base_request_id`, `framing` | prompt identity; the three framings of a request share `base_request_id` |
 | `prompt` | the user turn sent to the model |
-| `fp16_reply`, `quantized_reply` | the two replies |
-| `fp16_complied`, `quantized_complied` | LLM-judge label, 1 = complied, 0 = refused |
-| `flip`, `break`, `restore` | label changed; changed refuse to comply; changed comply to refuse |
+| `fp16_reply`, `quantized_reply` | the two replies (greedy, 100 new tokens) |
+| `fp16_complied`, `quantized_complied` | LLM-judge label: 1 = complied, 0 = refused |
+| `flip`, `break`, `restore` | label changed; refuse → comply; comply → refuse |
 | `m0` | fp16 first-token refusal margin: logit("I") minus the mean logit of "Sure", "Certainly", "Of" |
 | `delta_m` | change in that margin on the quantized checkpoint (Falcon3, all formats; Qwen2.5 AWQ and GPTQ) |
-| `human_fp16_complied`, `human_quantized_complied` | blind human label, present on the 267 flips only |
+| `human_fp16_complied`, `human_quantized_complied` | blind human label, on the 267 flips |
 
-## Intended use and what the data does not show
+## Notes
 
-Use it to study which refusals quantization breaks, to test predictors of
-breaks, or to evaluate safety judges on quantized-model outputs. Before relying
-on it, note:
-
-- **Labels are from one LLM judge** (`deepseek-ai/DeepSeek-V4-Flash`, temperature 0).
-  Human review covers the flips only, so it bounds false positives, not false negatives.
-- **Breaks are rare** (2.6% of pairs). Report precision and recall, not only AUC.
-- **`m0` is not specific to quantization.** It also ranks flips caused by sampling alone.
-- **Llama-3.2 `m0` depends on the run date**, because its chat template inserts it.
-- Small models (1B-3B), one decision type (refusal), English, 100-token replies.
-- Compliance means the reply did not refuse. It is not a measure of how harmful the reply is.
+- Labels come from one LLM judge (`deepseek-ai/DeepSeek-V4-Flash`, temperature 0)
+  that scores whether a refusal happened, not how harmful a reply is.
+- Breaks are rare (2.6% of pairs), so report precision and recall alongside AUC.
+- Llama-3.2's chat template inserts the run date, so its `m0` varies across run dates.
+- The prompts ask for harmful content and some replies provide it. Use the data for
+  safety research.
 
 ## License
 
-Our labels, margins and the prompt templates are CC BY 4.0. The prompts derive
-from AdvBench and InjecAgent. Model replies remain under their models' licenses:
-TII Falcon License (Falcon3), Llama 3.2 Community License (Llama-3.2), Apache 2.0
-(Qwen2.5-1.5B) and the non-commercial Qwen Research License (Qwen2.5-3B). Filter
-on `family` and `size` if your use needs a single license.
+Our labels and margins are CC BY 4.0. Prompts derive from AdvBench and
+InjecAgent. Model replies keep their models' licenses: TII Falcon License
+(Falcon3), Llama 3.2 Community License (Llama-3.2), Apache 2.0 (Qwen2.5-1.5B) and
+the non-commercial Qwen Research License (Qwen2.5-3B). Filter on `family` and
+`size` if your use needs a single license.
 
 ## Citation
 
