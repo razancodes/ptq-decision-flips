@@ -293,7 +293,7 @@
    "n": 881,
    "breaks": 55,
    "base_rate": 0.0624,
-   "FTFI m0 (paper)": {
+   "m0 (paper)": {
     "auc": 0.9813,
     "ap": 0.758
    },
@@ -334,7 +334,7 @@
    "n": 810,
    "breaks": 24,
    "base_rate": 0.0296,
-   "FTFI m0 (paper)": {
+   "m0 (paper)": {
     "auc": 0.9497,
     "ap": 0.479
    },
@@ -375,7 +375,7 @@
    "n": 681,
    "breaks": 40,
    "base_rate": 0.0587,
-   "FTFI m0 (paper)": {
+   "m0 (paper)": {
     "auc": 0.8926,
     "ap": 0.297
    },
@@ -416,7 +416,7 @@
    "n": 877,
    "breaks": 4,
    "base_rate": 0.0046,
-   "FTFI m0 (paper)": {
+   "m0 (paper)": {
     "auc": 0.7892,
     "ap": 0.093
    },
@@ -457,7 +457,7 @@
    "n": 891,
    "breaks": 7,
    "base_rate": 0.0079,
-   "FTFI m0 (paper)": {
+   "m0 (paper)": {
     "auc": 0.9417,
     "ap": 0.204
    },
@@ -498,7 +498,7 @@
    "n": 609,
    "breaks": 8,
    "base_rate": 0.0131,
-   "FTFI m0 (paper)": {
+   "m0 (paper)": {
     "auc": 0.9168,
     "ap": 0.233
    },

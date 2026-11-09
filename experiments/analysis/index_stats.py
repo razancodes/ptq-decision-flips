@@ -1,7 +1,7 @@
 """
 index_stats.py  --  what the first-token index can honestly be said to do.
 
-Everything the poster claims about the index itself, computed once, with the
+Everything claimed about the m0 index itself, computed once, with the
 falsifying controls next to each claim rather than in an appendix.
 
 Six blocks:

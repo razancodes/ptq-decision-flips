@@ -21,10 +21,13 @@ refusal decisions a real quantization format flips. It predicts the *size* of
 the margin shift well: within a factor of two on all six Falcon3
 model-by-format cells, median observed/predicted ratio 0.62. It does not
 predict *which decisions flip*: the zero-crossing criterion under-predicts flip
-rates by 3.5 to 337 times, because the behavioural boundary is not at zero (in
-57 of 59 Falcon3 breaks the measured post-quantization margin is still
-positive). The pre-quantization margin itself predicts flips far better than
-the theory's own quantity: AUC 0.948 against 0.715 on the same pool.
+rates by 3.5 to 337 times. We trace the gap to the decision boundary rather than
+the perturbation: in 57 of 59 Falcon3 breaks the measured post-quantization
+margin is still positive, so the behaviour changes before the margin reaches
+zero. The pre-quantization margin itself predicts flips far better than the
+theory's own quantity: AUC 0.948 against 0.715 on the same pool. It measures
+how fragile a refusal is, not something specific to quantization: it also
+ranks flips caused by sampling alone.
 
 ## Reproduce the paper
 
@@ -73,6 +76,7 @@ results/results.csv             Study A, the original grid (decoding inherited; 
 results/margin/                 synthetic perturbation sweep and re-seed control
 results/analysis/               stated-decoding generations, judge labels, every derived artifact
 legacy/notebooks/               the Colab notebooks behind Study A, kept as a record
+hf_dataset/                     builder and card for the Hugging Face dataset
 ```
 
 `results/README.md` lists which files are raw measurements and which are derived.
@@ -103,6 +107,22 @@ Generation must state its decoding. Every stated-decoding run passes
 `do_sample=False` (transformers) or `temperature=0.0` (llama.cpp) explicitly. Do
 not inherit a checkpoint's `generation_config.json`: that is the confound the
 paper documents.
+
+## Hugging Face dataset
+
+`hf_dataset/` builds the paired-decision data as a single gated dataset: 5,386
+fp16-versus-quantized pairs with both replies, judge labels, flip direction,
+`m0`, `delta_m` where measured, and the human labels on all 267 flips. Its card
+(`hf_dataset/README.md`) states the licenses and limitations.
+
+```bash
+python hf_dataset/build.py                       # writes hf_dataset/data/pairs.parquet, asserting the paper's counts
+hf auth login
+hf repos create <owner>/ptq-refusal-flips --repo-type dataset --private   # make public once gating is on
+hf upload <owner>/ptq-refusal-flips hf_dataset . --repo-type dataset --exclude "build.py"
+```
+
+Then turn on gated access in the dataset's settings.
 
 ## Known issues, stated rather than hidden
 
@@ -145,6 +165,8 @@ paper documents.
 
 ## License
 
-Code: MIT (`LICENSE`). Data and results: CC BY 4.0 (`LICENSE-DATA`). The attack
-prompts derive from AdvBench and InjecAgent, and the replies were produced by
-Falcon3, Llama-3.2 and Qwen2.5; their own licenses apply to those parts.
+Code: MIT (`LICENSE`). Our labels, margins and derived results: CC BY 4.0.
+Model replies stay under their models' licenses (TII Falcon License, Llama 3.2
+Community License, Apache 2.0 for Qwen2.5-1.5B, the non-commercial Qwen Research
+License for Qwen2.5-3B), and the prompts derive from AdvBench and InjecAgent.
+`LICENSE-DATA` has the details.

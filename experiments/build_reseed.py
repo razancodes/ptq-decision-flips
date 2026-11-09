@@ -2,7 +2,7 @@
 build_reseed.py
 ===============
 Build the E4 re-seed control kernel (generation only; classification is done
-locally with a classifier trained on the existing human labels).
+afterwards by the LLM judge, experiments/judge_driver.py).
 
 Two modes, split by repo gating rather than by science:
 

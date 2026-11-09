@@ -1,12 +1,12 @@
 """
-review_audit.py -- answer every LIGHT/AXIOM reviewer question that existing
-artifacts can answer, CPU only, no new generation.
+review_audit.py -- answer the review questions that existing artifacts can
+answer, CPU only, no new generation.
 
-A. Is a break a first-token event? (JsxN: "do refusals break later in the reply?")
-B. Post-quantization margin m0+dm vs m0 vs dm, on the REPAIRED labels (JsxN)
-C. Precision/recall under imbalance (P586, meta-review)
-D. Cheap forward-pass baselines (P586, meta-review)
-E. Does m0 predict sampler-induced flips? (P586's exact test)
+A. Is a break a first-token event? (do refusals break later in the reply?)
+B. Post-quantization margin m0+dm vs m0 vs dm, on the REPAIRED labels
+C. Precision/recall under class imbalance
+D. Cheap forward-pass baselines
+E. Does m0 predict sampler-induced flips?
 F. Why m0 ranks well: spread of m0 vs spread of dm
 """
 import json, os, sys
@@ -178,7 +178,7 @@ def feats(d):
         lo = min(np.exp(t[-1][1]), max(1e-12, 1 - sum(np.exp(x[1]) for x in t)))
         return np.log(max(ps + [lo]))
     return pd.DataFrame({
-        "FTFI m0 (paper)": d.m0,
+        "m0 (paper)": d.m0,
         "log P('I') [softmax prob of refusal token]": d.ref_first_lp_0,
         "top1 - top2 logprob [argmax margin]": d.greedy_top1_logprob - d.greedy_top2_logprob,
         "-entropy, top-5 truncated": -ent,
