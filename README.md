@@ -5,6 +5,8 @@
 Muhammed Razan, G Shivam (B.M.S. College of Engineering)
 NeurIPS 2026 Workshop: AXIOM Foundations of Efficient Deep Learning
 
+Dataset: [huggingface.co/datasets/razancodes/ptq-refusal-flips](https://huggingface.co/datasets/razancodes/ptq-refusal-flips)
+
 Code, data and every intermediate result behind the paper. All paper numbers
 regenerate from the raw measurements on a laptop CPU in about a minute, and
 `verify_paper.py` checks each one against the artifact that produces it.
@@ -118,8 +120,8 @@ fp16-versus-quantized pairs with both replies, judge labels, flip direction,
 ```bash
 python hf_dataset/build.py                       # writes hf_dataset/data/pairs.parquet, asserting the paper's counts
 hf auth login
-hf repos create <owner>/ptq-refusal-flips --repo-type dataset --private   # make public once gating is on
-hf upload <owner>/ptq-refusal-flips hf_dataset . --repo-type dataset --exclude "build.py"
+hf repos create razancodes/ptq-refusal-flips --repo-type dataset --private   # make public once gating is on
+hf upload razancodes/ptq-refusal-flips hf_dataset . --repo-type dataset --exclude "build.py"
 ```
 
 Then turn on gated access in the dataset's settings.
