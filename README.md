@@ -48,8 +48,8 @@ far better than the theory's own quantity.
 
 | | |
 |---|---|
-| Variance model, observed / predicted spread | within 2x on 6 of 6 cells, median 0.62 |
-| Zero-crossing criterion, observed / predicted flip rate | 3.5x to 337x |
+| Variance model, observed / predicted spread (six Falcon3 cells) | within 2x on 6 of 6, median 0.62 |
+| Zero-crossing criterion, observed / predicted flip rate (same cells) | 3.5x to 337x |
 | Falcon3 refusal breaks with a positive post-quantization margin | 57 of 59 |
 | Flip prediction, Falcon3 (1,788 pairs): `m0` vs `Δm` | AUC 0.948 vs 0.715 |
 | `m0` within the fp16-refused stratum: Falcon3 / Llama-3.2 / Qwen2.5 | AUC 0.952 / 0.949 / 0.902 |
