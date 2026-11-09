@@ -42,6 +42,7 @@ TS = lambda c: J("s5_jailbreak_tstats.json", "cells", c)                        
 A_F = lambda k: J("review_audit.json", "A_first_token_event", "Falcon3", k)        # noqa: E731
 RANK = lambda m: J("index_stats.json", "ranking_break", m)                         # noqa: E731
 sig = lambda: [c for c in J("s5_jailbreak_tstats.json", "significant")]            # noqa: E731
+TIER = lambda kind, k: (lambda d: 100 * d["flips"] / d["n"])(J("paper_tables.json", "tier_flips_judge_labels", kind, k))  # noqa: E731
 
 # (where, value as printed, computed value, tolerance or None)
 CLAIMS = [
@@ -74,9 +75,9 @@ CLAIMS = [
     ("S3.2: miss by format, AWQ", "36", lambda: DR("dose_response_recheck.json", "by_method")[1]["factor"], None),
     ("S3.2: miss by format, GGUF", "302", lambda: DR("dose_response_recheck.json", "by_method")[2]["factor"], None),
     ("S3.2/B.4: alpha needed, low end", "0.16", lambda: min(c["alpha_required"] for c in DR("dose_response_recheck.json", "alpha_shortfall")), None),
-    ("S3.2/B.4: alpha needed, high end", "0.51", lambda: max(c["alpha_required"] for c in DR("dose_response_recheck.json", "alpha_shortfall")), None),
-    ("S3.2/B.4: times the largest dose (0.04), high end", "13", lambda: max(c["alpha_required"] for c in DR("dose_response_recheck.json", "alpha_shortfall")) / 0.04, None),
-    ("S3.2: cells with significant mean shift", "5", lambda: len(sig()), None),
+    ("S3.2/B.4: alpha needed, high end", "0.37", lambda: max(c["alpha_required"] for c in DR("dose_response_recheck.json", "alpha_shortfall")), None),
+    ("S3.2/B.4: times the largest dose (0.04), high end", "9", lambda: max(c["alpha_required"] for c in DR("dose_response_recheck.json", "alpha_shortfall")) / 0.04, None),
+    ("S3.2/B.4: cells with |mean/SD| >= 0.4", "5", lambda: sum(abs(V(c, "mean_over_sd")) >= 0.4 for c in J("mechanism_verdict.json", "Q2_variance_model")), None),
     ("S3.2: cells with negative mean shift", "4", lambda: sum(TS(c)["mean"] < 0 for c in J("s5_jailbreak_tstats.json", "cells")), None),
     ("S3.2/B.4: most affected mean/SD", "-2.11", lambda: V("3B-awq", "mean_over_sd"), None),
     # ---- section 3.3, Table 2
@@ -135,6 +136,8 @@ CLAIMS = [
     ("B.4: fp16 boundary, Falcon3-3B", "3.8", lambda: J("threshold.json", "part1_threshold", "Falcon3-3B", "m_star"), None),
     ("B.4: geometric-mean miss at zero", "40", lambda: J("threshold.json", "part3_zero_crossing_ladder", "geomean_miss_M0_zero_no_mean"), None),
     ("B.4: geometric-mean miss at boundary", "1.5", lambda: J("threshold.json", "part3_zero_crossing_ladder", "geomean_miss_M2_star_no_mean"), None),
+    ("B.4: miss across the boundary CI, low", "0.6", lambda: J("threshold.json", "part3_zero_crossing_ladder", "geomean_miss_M2_at_ci_high"), None),
+    ("B.4: miss across the boundary CI, high", "13.7", lambda: J("threshold.json", "part3_zero_crossing_ladder", "geomean_miss_M2_at_ci_low"), None),
     # ---- Appendix B.4 per-model results (base-request clustered elsewhere; point values here)
     ("B.4: Falcon3-1B AUC", "0.789", lambda: RANK("Falcon3-1B")["auc"], None),
     ("B.4: Falcon3-1B breaks", "4", lambda: RANK("Falcon3-1B")["events"], None),
@@ -156,7 +159,10 @@ CLAIMS = [
     ("Table 7: length-matched m0 AUC", "0.930", lambda: J("regrid_summary.json", "repaired_s47", "all_cells", "m0_auc_length_matched"), None),
     ("Table 7: stratified AUC", "0.952", lambda: J("regrid_summary.json", "repaired_s47", "all_cells", "fp16_refused_auc"), None),
     ("Table 7: pooled AUC", "0.948", lambda: J("regrid_summary.json", "repaired_s47", "all_cells", "m0_auc"), None),
-    ("Table 7: plain-tier flips under quantization (Falcon3) %", "1.00", lambda: J("regrid_summary.json", "repaired_s47", "all_cells", "tier_flip_rate_pct", "plain"), None),
+    ("Table 7: plain flips under sampling %, Llama-3.2", "0.5", lambda: TIER("sampling_only", "Llama-3.2|plain"), None),
+    ("Table 7: plain flips under sampling %, Qwen2.5", "0.5", lambda: TIER("sampling_only", "Qwen2.5|plain"), None),
+    ("Table 7: plain flips under quantization %, low (Qwen2.5)", "0.3", lambda: TIER("quantization", "Qwen2.5|plain"), None),
+    ("Table 7: plain flips under quantization %, high (Falcon3)", "1.0", lambda: TIER("quantization", "Falcon3|plain"), None),
     # ---- compute and re-seed (Appendix B.5)
     ("B.5: re-seed comparisons", "1791", lambda: J("null_is_it_real.json", "n_comparisons"), None),
     ("B.5: re-seed comparisons with different text", "93", lambda: J("null_is_it_real.json", "n_text_differs"), None),
@@ -164,13 +170,7 @@ CLAIMS = [
 
 # Printed numbers that no shipped script produces. Listed so they are not
 # mistaken for verified ones.
-UNVERIFIED = [
-    ("Table 7: plain flips 0.17-0.56% under sampling",
-     "From a classifier-labelled sampling control whose producing code is not in this "
-     "repository. On judge labels (paper_tables.json, tier_flips_judge_labels) plain "
-     "flips 1/200 under sampling in both Llama-3.2 and Qwen2.5, and 3/600 and 2/600 "
-     "under quantization in the same families."),
-]
+UNVERIFIED = []  # every printed number now has a producing script
 
 
 def rounds_to(v, printed):

@@ -147,9 +147,6 @@ Then turn on gated access in the dataset's settings.
 - **GGUF tensor error** is measured on weights dequantized in Python, not inside llama.cpp.
 - **One judge.** Human review covers all 267 judge-flagged flips but no non-flips, so it
   bounds false positives, not false negatives.
-- **One table entry has no producer here.** Table 7's plain-tier sampling rate
-  (0.17-0.56%) came from a classifier-labelled analysis whose code is not in this
-  repository; `verify_paper.py` lists it as unverified and gives the judge-label figures.
 
 ## Citation
 
