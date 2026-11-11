@@ -30,8 +30,44 @@ def J(name, *path):
     return o
 
 
+_sweep = []
+
+
+def _sweep_df():
+    if not _sweep:
+        _sweep.append(pd.read_csv(os.path.join(HERE, "results", "margin", "margin_sweep_all.csv"),
+                                  usecols=["alpha", "model_key", "prompt_id"]))
+    return _sweep[0]
+
+
 def sweep_rows():
-    return len(pd.read_csv(os.path.join(HERE, "results", "margin", "margin_sweep_all.csv"), usecols=["alpha"]))
+    return len(_sweep_df())
+
+
+def sweep_prompts_per_model():
+    """Distinct prompts per model in the sweep: 300 jailbreak + 100 injection."""
+    n = _sweep_df().groupby("model_key").prompt_id.nunique()
+    assert n.nunique() == 1, n.to_dict()
+    return int(n.iloc[0])
+
+
+# The stated-decoding grid: the Falcon3 re-run and the Llama-3.2 / Qwen2.5
+# collection, 24 cells x 400 prompts (7,200 of them on the jailbreak set).
+GEN_FILES = ["regrid_generations.csv", "regrid_generations_gguf.csv",
+             "p21_generations_gated.csv", "p21_generations_gguf-a.csv",
+             "p21_generations_gguf-b.csv", "p21_generations_q-a.csv",
+             "p21_generations_q-b.csv"]
+
+
+def generation_rows():
+    return sum(len(pd.read_csv(os.path.join(R, f), usecols=[0])) for f in GEN_FILES)
+
+
+def review_direction(kind):
+    """Human-reviewed flips by direction: a break is fp16 refused -> quantized complied."""
+    d = pd.read_csv(os.path.join(R, "human_review_flip_pairs.csv"),
+                    usecols=["judge_label_fp16__DO_NOT_PEEK"]).iloc[:, 0]
+    return int((d == (0 if kind == "break" else 1)).sum())
 
 
 V = lambda c, k: J("mechanism_verdict.json", "Q2_variance_model", c, k)           # noqa: E731
@@ -163,9 +199,14 @@ CLAIMS = [
     ("Table 7: plain flips under sampling %, Qwen2.5", "0.5", lambda: TIER("sampling_only", "Qwen2.5|plain"), None),
     ("Table 7: plain flips under quantization %, low (Qwen2.5)", "0.3", lambda: TIER("quantization", "Qwen2.5|plain"), None),
     ("Table 7: plain flips under quantization %, high (Falcon3)", "1.0", lambda: TIER("quantization", "Falcon3|plain"), None),
-    # ---- compute and re-seed (Appendix B.5)
-    ("B.5: re-seed comparisons", "1791", lambda: J("null_is_it_real.json", "n_comparisons"), None),
-    ("B.5: re-seed comparisons with different text", "93", lambda: J("null_is_it_real.json", "n_text_differs"), None),
+    # ---- compute and re-seed (Appendix B.6)
+    ("B.6: re-seed comparisons", "1791", lambda: J("null_is_it_real.json", "n_comparisons"), None),
+    ("B.6: re-seed comparisons with different text", "93", lambda: J("null_is_it_real.json", "n_text_differs"), None),
+    # ---- camera-ready additions (2026-11-12): prompt sets and counts
+    ("B.1: prompts per cell (300 jailbreak + 100 injection)", "400", sweep_prompts_per_model, None),
+    ("B.3: reviewed flips that are breaks", "138", lambda: review_direction("break"), None),
+    ("B.3: reviewed flips that are restores", "129", lambda: review_direction("restore"), None),
+    ("B.6: stated-decoding generations", "9600", generation_rows, None),
 ]
 
 # Printed numbers that no shipped script produces. Listed so they are not

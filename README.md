@@ -73,7 +73,7 @@ python verify_paper.py    # check each number the paper prints
 
 ```text
 ...
-108 of 108 numbers verified, 0 failed, 0 unverifiable.
+112 of 112 numbers verified, 0 failed, 0 unverifiable.
 ```
 
 ## Dataset
